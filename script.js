@@ -1,53 +1,99 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const animationContainer = document.getElementById('animation-container');
-    const mainContent = document.getElementById('main-content');
-    const newAnimationInput = document.getElementById('new-animation-input');
-    const addAnimationBtn = document.getElementById('add-animation-btn');
+const animations = {
+    pikachu: [
+        `  \\:. .:/
+\\''._____.''/
+ \\ / .--.--, /
+ .':. .':. \\
+ '::' . '::' |
+|'. ._. .'|
+|.' '.|
+|.\\  /.|
+\\ ;,/ '|
+ '. .'`,
+        `  \\:. .:/
+\\''._____.''/
+ \\ / .--.--, /
+ .':. .':. \\
+ '::' . '::' |
+|'. ._. .'|
+|.' '.|
+|.\\ / /.|
+\\ ;,/ '|
+ '. .'`,
+        `  \\:. .:/
+\\''._____.''/
+ \\ / .--.--, /
+ .':. .':. \\
+ '::' . '::' |
+|'. ._. .'|
+|.' '.|
+|.\\  /.|
+\\ ;,/ '|
+ '. .'`,
+        `  \\:. .:/
+\\''._____.''/
+ \\ / .--.--, /
+ .':. .':. \\
+ '::' . '::' |
+|'. ._. .'|
+|.' '.|
+|.\\ / /.|
+\\ ;,/ '|
+ '. .'`,
+        `  \\:. .:/
+\\''._____.''/
+ \\ / .--.--, /
+ .':. .':. \\
+ '::' . '::' |
+|'. ._. .'|
+|.' '.|
+|.\\  /.|
+\\ ;,/ '|
+ '. .'`
+    ],
+    // Add more animations here
+};
 
-    function displayRandomAnimation() {
-        const randomIndex = Math.floor(Math.random() * animations.length);
-        const randomAnimation = animations[randomIndex];
-        animationContainer.innerHTML = randomAnimation;
-        animateText(animationContainer);
-    }
+function animateAsciiArt(element, frames, speed = 500) {
+    let currentFrame = 0;
+    setInterval(() => {
+        element.textContent = frames[currentFrame];
+        currentFrame = (currentFrame + 1) % frames.length;
+    }, speed);
+}
 
-    function animateText(element) {
-        const text = element.innerHTML;
-        element.innerHTML = '';
-        let i = 0;
-        const interval = setInterval(() => {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 10);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const welcomeAnimation = document.getElementById('welcome-animation');
+    animateAsciiArt(welcomeAnimation, animations.pikachu);
 
-    function addNewAnimation() {
-        const newAnimation = newAnimationInput.value.trim();
-        if (newAnimation) {
-            animations.push(newAnimation);
-            newAnimationInput.value = '';
-            alert('New animation added successfully!');
-        }
-    }
-
-    addAnimationBtn.addEventListener('click', addNewAnimation);
-
-    // Display random animation on page load
-    displayRandomAnimation();
-
-    // Change animation every 30 seconds
-    setInterval(displayRandomAnimation, 30000);
-
-    // Handle navigation
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = this.getAttribute('href').substring(1);
-            mainContent.innerHTML = `<h2>${this.textContent}</h2><p>Content for ${target} goes here.</p>`;
-        });
-    });
+    // Add more functionality here
 });
+
+// Function to add new animation
+function addNewAnimation() {
+    const name = document.getElementById('animation-name').value;
+    const frames = [];
+    for (let i = 1; i <= 5; i++) {
+        frames.push(document.getElementById(`frame-${i}`).value);
+    }
+    animations[name] = frames;
+    alert('New animation added!');
+}
+
+// Function to display random animation
+function displayRandomAnimation() {
+    const animationNames = Object.keys(animations);
+    const randomName = animationNames[Math.floor(Math.random() * animationNames.length)];
+    const contentArea = document.getElementById('content');
+    contentArea.innerHTML = `<pre id="random-animation"></pre>`;
+    const randomAnimationElement = document.getElementById('random-animation');
+    animateAsciiArt(randomAnimationElement, animations[randomName]);
+}
+
+// Add event listeners
+document.getElementById('add-animation-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    addNewAnimation();
+});
+
+document.getElementById('random-animation-button').addEventListener('click', displayRandomAnimation);
