@@ -3,36 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGO HubLab 🐕‍🦺</title>
+    <title>Instructor Platform</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>LEGO HubLab 🐕‍🦺</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#guides">Guides</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                    <li><a href="#lab-chatter">Lab Chatter</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="welcome">
-                <h2>Welcome to LEGO HubLab!</h2>
-                <div id="welcome-animation"></div>
-            </section>
-            <section id="content">
-                <!-- Content will be loaded here -->
-            </section>
-        </main>
-        <footer>
-            <div id="daily-fun-fact"></div>
-            <div id="celebration-station"></div>
-        </footer>
+    <div class="sidebar">
+        <button id="toggleSidebar">☰</button>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#instructions">Instructions</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </div>
+    <main>
+        <div id="content">
+            <h1>Welcome to the Instructor Platform</h1>
+            <p>Select a topic from the sidebar to view instructions.</p>
+        </div>
+        <div id="animationPanel">
+            <div id="animation"></div>
+        </div>
+    </main>
+    <script src="animations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
