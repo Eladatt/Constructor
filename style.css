@@ -1,92 +1,89 @@
 :root {
-    --lego-red: #FF0000;
-    --lego-blue: #0000FF;
-    --lego-yellow: #FFFF00;
-    --lego-green: #00FF00;
-    --lego-purple: #800080;
-    --lego-pink: #FFC0CB;
-    --lego-orange: #FFA500;
-    --lego-black: #000000;
-    --lego-white: #FFFFFF;
+    --pink: #FF69B4;
+    --green: #00FF00;
+    --purple: #8A2BE2;
+    --red: #FF0000;
+    --cyan: #00FFFF;
+    --grey: #808080;
+    --dark-grey: #404040;
 }
 
 body {
-    font-family: 'Courier New', monospace;
-    background-color: var(--lego-white);
-    color: var(--lego-black);
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.container {
     display: flex;
-    height: 100vh;
 }
 
-#sidebar {
+.sidebar {
+    background-color: var(--dark-grey);
+    color: white;
     width: 250px;
-    background-color: var(--lego-blue);
-    color: var(--lego-white);
+    height: 100vh;
     padding: 20px;
-    transition: all 0.3s;
+    transition: transform 0.3s ease-in-out;
 }
 
-#content {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
+.sidebar.collapsed {
+    transform: translateX(-230px);
 }
 
-#animation-container {
-    font-family: monospace;
-    white-space: pre;
-    font-size: 12px;
-    line-height: 1.2;
-    margin-bottom: 20px;
+#toggleSidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
 }
 
-.nav-links {
+nav ul {
     list-style-type: none;
     padding: 0;
 }
 
-.nav-links li {
+nav ul li {
     margin-bottom: 10px;
 }
 
-.nav-links a {
-    color: var(--lego-white);
+nav ul li a {
+    color: white;
     text-decoration: none;
 }
 
-h1, h2, h3 {
-    color: var(--lego-blue);
+main {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.key-concept {
-    font-weight: bold;
+#content {
+    flex-grow: 1;
 }
 
-.key-concept.purple { color: var(--lego-purple); }
-.key-concept.red { color: var(--lego-red); }
-.key-concept.orange { color: var(--lego-orange); }
-.key-concept.green { color: var(--lego-green); }
-.key-concept.pink { color: var(--lego-pink); }
-
-#new-animation-form {
-    margin-top: 20px;
+#animationPanel {
+    background-color: var(--grey);
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-#new-animation-input {
+#animation {
     width: 100%;
-    margin-bottom: 10px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
 }
 
-#add-animation-btn {
-    background-color: var(--lego-green);
-    color: var(--lego-white);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
+.highlight-pink { color: var(--pink); }
+.highlight-green { color: var(--green); }
+.highlight-purple { color: var(--purple); }
+.highlight-red { color: var(--red); }
+.highlight-cyan { color: var(--cyan); }
