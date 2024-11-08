@@ -1,0 +1,43 @@
+ASCII Art:
+           /\
+          /  \
+         /\/\/\
+        /  /\  \
+   /\  /  /  \  \
+  /  \/  /    \  \
+ /    \ /     /\  \
+/\/\   /     /  \  \
+/  /\_/\    /    \  \
+\ /    \/\ /     /\  \
+ \      \ /     /  \  \
+  \      \     /    \  \
+   \     /\   /      \  \
+    \   /  \ /       /\  \
+     \ /    \       /  \  \
+      \     /\     /    \  \
+       \   /  \   /     /\  \
+        \ /    \ /     /  \  \
+         \     /\     /    \  \
+          \   /  \   /     /\  \
+           \ /    \ /     /  \  \
+            \     /\     /    \  \
+             \   /  \   /      \  \
+              \ /    \ /        \  \
+               \      \          \  \
+                \      \          \  \
+                 \      \          \  \
+                  \      \          \  \
+                   \      \          \  \
+                    \      \          \  \
+                     \______\__________\__\
+
+Anesthesia Considerations:
+- Induction: Combination of ketamine (5 mg/kg) and midazolam (0.2 mg/kg) IM.
+- Maintenance: Isoflurane or sevoflurane with oxygen.
+- Muscle relaxation: Consider gallamine triethiodide for its effects on cardiac vagus.
+- Monitoring: Separate monitoring for avian and mammalian parts. Use multi-species compatible equipment.
+- Recovery: Provide a large, padded area to prevent injury during recovery.
+- Special considerations: Beak and talon safety precautions, feather-friendly positioning and draping.
+
+Summary Table Row:
+Griffin | Ketamine (5 mg/kg) and midazolam (0.2 mg/kg) IM for induction, isoflurane or sevoflurane for maintenance | Hybrid avian and mammalian physiology | Large padded recovery area, multi-species compatible monitoring, beak and talon safety measures
