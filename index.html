@@ -1,47 +1,68 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGO HubLab 🐕‍🦺</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="js/animations.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <div class="container">
         <nav id="sidebar">
             <div class="sidebar-header">
                 <img src="images/logo.png" alt="LEGO HubLab Logo" class="logo">
-                <h2>LEGO HubLab 🐕‍🦺</h2>
+                <h1>LEGO HubLab 🐕‍🦺</h1>
             </div>
-            <button id="sidebarToggle">☰</button>
+            <button id="sidebarToggle" aria-label="Toggle Sidebar">☰</button>
             <div id="languageSelector">
-                <select id="language">
+                <select id="language" aria-label="Select Language">
+                    <option value="en">English</option>
                     <option value="he">עברית</option>
                     <option value="ar">العربية</option>
                     <option value="ru">Русский</option>
-                    <option value="en">English</option>
                 </select>
             </div>
             <ul class="nav-links">
-                <li><a href="pages/home.html" target="content-frame">🏠 בית</a></li>
-                <li><a href="guides/lab-safety.html" target="content-frame">🧪 בטיחות במעבדה</a></li>
+                <li><a href="pages/home.html" data-page="home">🏠 Home</a></li>
+                <li><a href="guides/lab-safety.html" data-page="lab-safety">🧪 Lab Safety</a></li>
                 <li>
-                    <a href="#" class="dropdown-toggle">🔬 ניתוח</a>
+                    <a href="#" class="dropdown-toggle">🔬 Analyzing</a>
                     <ul class="submenu">
-                        <li><a href="guides/image-processing.html" target="content-frame">🖼️ עיבוד תמונה</a></li>
-                        <li><a href="guides/pcr-techniques.html" target="content-frame">🧬 טכניקות PCR</a></li>
+                        <li><a href="guides/image-processing.html" data-page="image-processing">🖼️ Image Processing</a></li>
+                        <li><a href="guides/pcr-techniques.html" data-page="pcr-techniques">🧬 PCR Techniques</a></li>
                     </ul>
                 </li>
-                <!-- Add more menu items here -->
+                <li>
+                    <a href="#" class="dropdown-toggle">📊 Visualize</a>
+                    <ul class="submenu">
+                        <li><a href="guides/data-visualization.html" data-page="data-visualization">📈 Data Visualization</a></li>
+                        <li><a href="guides/microscopy-basics.html" data-page="microscopy-basics">🔬 Microscopy Basics</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">📐 Statistics</a>
+                    <ul class="submenu">
+                        <li><a href="guides/covariance-analysis.html" data-page="covariance-analysis">📉 Covariance Analysis</a></li>
+                        <li><a href="guides/repeated-measures.html" data-page="repeated-measures">🔁 Repeated Measures</a></li>
+                        <li><a href="guides/robust-statistics.html" data-page="robust-statistics">💪 Robust Statistics</a></li>
+                        <li><a href="guides/statistical-distractors.html" data-page="statistical-distractors">🎭 Statistical Distractors</a></li>
+                    </ul>
+                </li>
+                <li><a href="guides/scientific-writing.html" data-page="scientific-writing">✍️ Scientific Writing</a></li>
+                <li><a href="pages/resources.html" data-page="resources">📚 Resources</a></li>
+                <li><a href="pages/celebration-station.html" data-page="celebration-station">🎉 Celebration Station</a></li>
             </ul>
         </nav>
         <main id="content">
             <div id="animation-container"></div>
-            <iframe name="content-frame" id="content-frame" src="pages/home.html"></iframe>
+            <div id="page-content"></div>
         </main>
     </div>
-    <script src="animations.js"></script>
-    <script src="script.js"></script>
+    <footer>
+        <div id="daily-fun-fact"></div>
+    </footer>
 </body>
 </html>
