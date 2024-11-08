@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGO HubLab 🐕‍🦺</title>
+    <title>LEGO HubLab 🐕‍🦺 - ASCII Art Animations</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container">
@@ -16,41 +15,34 @@
             </div>
             <button id="sidebarToggle">☰</button>
             <ul class="nav-links">
-                <li><a href="pages/home.html" target="content-frame">🏠 Home</a></li>
-                <li><a href="guides/lab-safety.html" target="content-frame">🧪 Lab Safety</a></li>
-                <li>
-                    <a href="#" class="dropdown-toggle">🔬 Analyzing</a>
-                    <ul class="submenu">
-                        <li><a href="guides/image-processing.html" target="content-frame">🖼️ Image Processing</a></li>
-                        <li><a href="guides/pcr-techniques.html" target="content-frame">🧬 PCR Techniques</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="dropdown-toggle">📊 Visualize</a>
-                    <ul class="submenu">
-                        <li><a href="guides/data-visualization.html" target="content-frame">📈 Data Visualization</a></li>
-                        <li><a href="guides/microscopy-basics.html" target="content-frame">🔬 Microscopy Basics</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="dropdown-toggle">📐 Statistics</a>
-                    <ul class="submenu">
-                        <li><a href="guides/covariance-analysis.html" target="content-frame">📉 Covariance Analysis</a></li>
-                        <li><a href="guides/repeated-measures.html" target="content-frame">🔁 Repeated Measures</a></li>
-                        <li><a href="guides/robust-statistics.html" target="content-frame">💪 Robust Statistics</a></li>
-                        <li><a href="guides/statistical-distractors.html" target="content-frame">🎭 Statistical Distractors</a></li>
-                    </ul>
-                </li>
-                <li><a href="guides/scientific-writing.html" target="content-frame">✍️ Scientific Writing</a></li>
-                <li><a href="pages/resources.html" target="content-frame">📚 Resources</a></li>
-                <li><a href="pages/lab-chatter.html" target="content-frame">💬 Lab Chatter</a></li>
-                <li><a href="pages/celebration-station.html" target="content-frame">🎉 Celebration Station</a></li>
+                <li><a href="#" data-page="home">🏠 Home</a></li>
+                <li><a href="#" data-page="animations">🎭 Animations</a></li>
+                <li><a href="#" data-page="add-animation">➕ Add Animation</a></li>
             </ul>
         </nav>
         <main id="content">
-            <iframe name="content-frame" id="content-frame" src="pages/home.html"></iframe>
+            <div id="home" class="page">
+                <h1>Welcome to LEGO HubLab 🐕‍🦺</h1>
+                <p>Explore our ASCII art animations!</p>
+                <div id="random-animation"></div>
+            </div>
+            <div id="animations" class="page" style="display:none;">
+                <h1>ASCII Art Animations</h1>
+                <div id="animation-list"></div>
+            </div>
+            <div id="add-animation" class="page" style="display:none;">
+                <h1>Add New Animation</h1>
+                <form id="new-animation-form">
+                    <label for="animation-name">Animation Name:</label>
+                    <input type="text" id="animation-name" required>
+                    <label for="animation-frames">Animation Frames (one frame per line):</label>
+                    <textarea id="animation-frames" rows="10" required></textarea>
+                    <button type="submit">Add Animation</button>
+                </form>
+            </div>
         </main>
     </div>
+    <script src="animations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
