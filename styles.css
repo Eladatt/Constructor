@@ -75,6 +75,7 @@ header {
     white-space: pre;
     font-size: 12px;
     line-height: 1.2;
+    overflow-x: auto;
 }
 
 #small-animations {
@@ -88,31 +89,4 @@ header {
 [dir="rtl"] {
     direction: rtl;
     text-align: right;
-}
-.summary-panel {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-.summary-panel table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.summary-panel th, .summary-panel td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.summary-panel th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.summary-panel tr:nth-child(even) {
-    background-color: #f9f9f9;
 }
