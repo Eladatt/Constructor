@@ -3,275 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGO HubLab 🐕‍🦺 - Maintenance Page</title>
-    <style>
-        body {
-            font-family: 'Courier New', monospace;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1, h2, h3 {
-            color: #0066cc;
-        }
-        pre {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            border-left: 3px solid #0066cc;
-            color: #666;
-            page-break-inside: avoid;
-            font-family: monospace;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 1.6em;
-            max-width: 100%;
-            overflow: auto;
-            padding: 1em 1.5em;
-            display: block;
-            word-wrap: break-word;
-        }
-        .hidden {
-            display: none;
-        }
-        button {
-            background-color: #0066cc;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        input[type="text"], textarea, select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .ascii-art {
-            font-family: monospace;
-            white-space: pre;
-            line-height: 1.2;
-        }
-        .step {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 20px;
-        }
-    </style>
+    <title>LEGO HubLab 🐕‍🦺 Maintenance Console</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>LEGO HubLab 🐕‍🦺 Maintenance Page</h1>
-        
-        <pre class="ascii-art">
-      _____
-     /     \    LEGO HubLab
-    /       \   Guide Management
-   /  /\ /\  \  System
-  /  /  V  \  \ 
- /  /       \  \
-/  /  GUIDE  \  \
-^^^^^^^^^^^^^^^^^^^^
-        </pre>
-        
-        <div class="step">
-            <h2>1. Manage Categories</h2>
-            <button onclick="showSection('addCategory')">Add Category</button>
-            <div id="addCategory" class="hidden">
-                <input type="text" id="categoryName" placeholder="Category Name">
-                <button onclick="addCategory()">Add Category</button>
-            </div>
-            <div id="categoryList"></div>
+    <div class="console">
+        <header>
+            <h1>LEGO HubLab 🐕‍🦺 Maintenance Console</h1>
+            <nav>
+                <button>🏠</button>
+                <button>📚</button>
+                <button>🧪</button>
+                <button>📊</button>
+                <button>✏️</button>
+                <button>🌐</button>
+                <button>🔧</button>
+                <button>💾</button>
+                <button>❓</button>
+            </nav>
+        </header>
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <label for="light-mode">Light Mode</label>
+            <input type="checkbox" id="mode-switch" checked />
+            <label for="dark-mode">Dark Mode</label>
         </div>
 
-        <div class="step">
-            <h2>2. Manage Guides</h2>
-            <button onclick="showSection('addGuide')">Add New Guide</button>
-            <div id="addGuide" class="hidden">
-                <input type="text" id="guideTitle" placeholder="Guide Title">
-                <select id="guideCategory"></select>
-                <textarea id="guideContent" rows="10" placeholder="Guide Content (Markdown format)"></textarea>
-                <button onclick="addGuide()">Add Guide</button>
-            </div>
+        <!-- Main Sections -->
+        <main>
+            <!-- Guide Management Section -->
+            <section class="guide-management">
+                <h2>Guide Management</h2>
+                <div class="guide-actions">
+                    <button class="vibrating">➕ Add New Guide</button>
+                    <button class="vibrating">📝 Edit Guide</button>
+                    <button class="vibrating">🗑️ Delete Guide</button>
+                    <button class="vibrating">🔍 Search Guides</button>
+                    <p>Current Guides: 42 | Last Updated: 2023-05-1</p>
+                </div>
+            </section>
+
+            <!-- Quick Add Multiple Guides Section -->
+            <section class="quick-add">
+                <h2>Quick Add Multiple Guides</h2>
+                <form id="quick-add-form">
+                    <input type="text" placeholder="Title" id="guide-title">
+                    <select id="guide-lang">
+                        <option value="">Lang: Select...</option>
+                        <!-- Add more language options here -->
+                    </select>
+                    <select id="guide-category">
+                        <option value="">Category: Select...</option>
+                        <!-- Add more categories here -->
+                    </select>
+                    <textarea placeholder="Content"></textarea><br />
+                    <div class="form-buttons">
+                        <button type="submit">➕ Add Another Guide</button>
+                        <button type="submit">💾 Save All Guides</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Category Management Section -->
+            <section class="category-management">
+                <h2>Category Management</h2>
+                <div class="category-actions">
+                    <button class="vibrating">➕ Add Category</button>
+                    <button class="vibrating">🌳 Manage Hierarchy</button>
+                    <p>Total Categories: 12</p>
+                </div>
+            </section>
+
+            <!-- ASCII Art Generator Section -->
+            <section class="ascii-generator">
+                <h2>ASCII Art Generator 🎨</h2>
+                Text: 
+                <input type="text" id="ascii-text" placeholder="Enter text..."><br />
+                Style:
+                <select id="ascii-style">
+                    <!-- Add more styles here -->
+                    <option value="">Standard Style</option>
+                </select><br />
+                Colorize: 
+                [🔴 Red] [🟢 Green] [🔵 Blue] [🟡 Yellow] [🟣 Purple]
+                
+                <!-- ASCII Art Preview -->
+                <pre id="ascii-preview" class="ascii-preview"></pre><br />
+                
+                <!-- Buttons for ASCII Art actions -->
+                [📋 Copy] [💾 Save as Guide Decoration]
+            </section>
+
+        </main>
+
+        <!-- Footer with additional options -->
+        <footer class="footer-actions">
+            [💡 Tips] [📊 Analytics] [👥 User Management] [🔒 Logout]
+        </footer>
+
+        <!-- Message Bar with Color Picker -->
+        <div class="message-bar">
+            💬 Type your command here... 
+            [Send]
+            
+            <!-- Vibrant Color Picker -->
+            Vibrant Colors:
+            [🔴 Red ] [🟢 Green ] [🔵 Blue ] 
+            [🟡 Yellow ] [🟣 Purple ]
         </div>
 
-        <div class="step">
-            <h2>3. Edit Existing Guides</h2>
-            <select id="editGuideSelect" onchange="loadGuideForEditing()">
-                <option value="">Select a guide to edit</option>
-            </select>
-            <div id="editGuideForm" class="hidden">
-                <input type="text" id="editGuideTitle">
-                <select id="editGuideCategory"></select>
-                <textarea id="editGuideContent" rows="10"></textarea>
-                <button onclick="updateGuide()">Update Guide</button>
-            </div>
-        </div>
-
-        <div class="step">
-            <h2>4. Manage Menu Structure</h2>
-            <textarea id="menuStructure" rows="20"></textarea>
-            <button onclick="saveMenuStructure()">Save Menu Structure</button>
-        </div>
-
-        <div class="step">
-            <h2>5. Export/Import Data</h2>
-            <button onclick="exportData()">Export Data</button>
-            <input type="file" id="importInput" accept=".json" onchange="importData(event)">
-            <button onclick="document.getElementById('importInput').click()">Import Data</button>
-        </div>
     </div>
 
-    <script>
-        let guides = JSON.parse(localStorage.getItem('guides')) || [];
-        let categories = JSON.parse(localStorage.getItem('categories')) || [];
-        let menuStructure = JSON.parse(localStorage.getItem('menuStructure')) || {};
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
 
-        function showSection(sectionId) {
-            document.querySelectorAll('.hidden').forEach(el => el.classList.add('hidden'));
-            document.getElementById(sectionId).classList.remove('hidden');
-        }
-
-        function addCategory() {
-            const name = document.getElementById('categoryName').value;
-            categories.push({ name, subcategories: [] });
-            localStorage.setItem('categories', JSON.stringify(categories));
-            loadCategories();
-            alert('Category added successfully!');
-        }
-
-        function addGuide() {
-            const title = document.getElementById('guideTitle').value;
-            const category = document.getElementById('guideCategory').value;
-            const content = document.getElementById('guideContent').value;
-            guides.push({ title, category, content });
-            localStorage.setItem('guides', JSON.stringify(guides));
-            loadGuides();
-            alert('Guide added successfully!');
-        }
-
-        function loadCategories() {
-            const categoryList = document.getElementById('categoryList');
-            const guideCategorySelect = document.getElementById('guideCategory');
-            const editGuideCategorySelect = document.getElementById('editGuideCategory');
-            
-            [categoryList, guideCategorySelect, editGuideCategorySelect].forEach(el => el.innerHTML = '');
-
-            categories.forEach(category => {
-                categoryList.innerHTML += `<p>${category.name}</p>`;
-                guideCategorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
-                editGuideCategorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
-            });
-        }
-
-        function loadGuides() {
-            const editGuideSelect = document.getElementById('editGuideSelect');
-            editGuideSelect.innerHTML = '<option value="">Select a guide to edit</option>';
-            guides.forEach(guide => {
-                editGuideSelect.innerHTML += `<option value="${guide.title}">${guide.title}</option>`;
-            });
-        }
-
-        function loadGuideForEditing() {
-            const guideTitle = document.getElementById('editGuideSelect').value;
-            const guide = guides.find(g => g.title === guideTitle);
-            if (guide) {
-                document.getElementById('editGuideTitle').value = guide.title;
-                document.getElementById('editGuideCategory').value = guide.category;
-                document.getElementById('editGuideContent').value = guide.content;
-                document.getElementById('editGuideForm').classList.remove('hidden');
-            } else {
-                document.getElementById('editGuideForm').classList.add('hidden');
-            }
-        }
-
-        function updateGuide() {
-            const oldTitle = document.getElementById('editGuideSelect').value;
-            const newTitle = document.getElementById('editGuideTitle').value;
-            const newCategory = document.getElementById('editGuideCategory').value;
-            const newContent = document.getElementById('editGuideContent').value;
-            const guideIndex = guides.findIndex(g => g.title === oldTitle);
-            if (guideIndex !== -1) {
-                guides[guideIndex] = { title: newTitle, category: newCategory, content: newContent };
-                localStorage.setItem('guides', JSON.stringify(guides));
-                loadGuides();
-                alert('Guide updated successfully!');
-            }
-        }
-
-        function loadMenuStructure() {
-            document.getElementById('menuStructure').value = JSON.stringify(menuStructure, null, 2);
-        }
-
-        function saveMenuStructure() {
-            try {
-                const newStructure = JSON.parse(document.getElementById('menuStructure').value);
-                menuStructure = newStructure;
-                localStorage.setItem('menuStructure', JSON.stringify(menuStructure));
-                alert('Menu structure saved successfully!');
-            } catch (error) {
-                alert('Invalid JSON structure. Please check your input.');
-            }
-        }
-
-        function exportData() {
-            const data = {
-                categories: categories,
-                guides: guides,
-                menuStructure: menuStructure
-            };
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "lego_hublab_data.json");
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
-        }
-
-        function importData(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const data = JSON.parse(e.target.result);
-                categories = data.categories;
-                guides = data.guides;
-                menuStructure = data.menuStructure;
-                localStorage.setItem('categories', JSON.stringify(categories));
-                localStorage.setItem('guides', JSON.stringify(guides));
-                localStorage.setItem('menuStructure', JSON.stringify(menuStructure));
-                loadCategories();
-                loadGuides();
-                loadMenuStructure();
-                alert('Data imported successfully!');
-            };
-            reader.readAsText(file);
-        }
-
-        // Initialize the page
-        loadCategories();
-        loadGuides();
-        loadMenuStructure();
-    </script>
 </body>
 </html>
