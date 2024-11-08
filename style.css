@@ -11,14 +11,14 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: var(--white);
-    color: var(--blue);
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
 .container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #sidebar {
@@ -68,7 +68,6 @@ body {
 #content {
     flex-grow: 1;
     padding: 20px;
-    background-color: var(--white);
 }
 
 #animation-container {
@@ -78,26 +77,40 @@ body {
     font-size: 10px;
     line-height: 10px;
     white-space: pre;
-    background-color: var(--white);
-    color: var(--blue);
+    background-color: var(--grey);
+    color: var(--white);
     margin-bottom: 20px;
 }
 
+#languageSelector {
+    margin-bottom: 20px;
+}
+
+.highlight-pink { color: var(--pink); }
+.highlight-green { color: var(--green); }
+.highlight-purple { color: var(--purple); }
+.highlight-red { color: var(--red); }
+.highlight-cyan { color: var(--cyan); }
+
 @media (max-width: 768px) {
-    #sidebar {
-        position: fixed;
-        left: -250px;
-        height: 100%;
-        z-index: 1000;
+    .container {
+        flex-direction: column;
     }
 
-    #sidebar.active {
+    #sidebar {
+        width: 100%;
+        position: fixed;
+        top: 0;
         left: 0;
+        z-index: 1000;
+        height: auto;
+    }
+
+    #sidebar.collapsed {
+        height: 60px;
     }
 
     #content {
-        width: 100%;
+        margin-top: 60px;
     }
 }
-
-/* Add more styles as needed */
