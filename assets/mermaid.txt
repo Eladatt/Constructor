@@ -1,0 +1,39 @@
+ASCII Art:
+           _
+         .' '.
+        /'-...-)
+       /    /__\
+      /     \  /
+    .'   ಠ ಠ) /
+   / / ,--'-)
+  | /`  (    \
+  o       `.__\
+   `._________/
+      |  | |
+   __/   | |
+  /  \   | |
+ //..\   | |
+//,,.\   | |
+\]`"`/   | |
+ \__/    | |
+  ` \    | |
+     )   | |
+    /    | |
+   /     | |
+  /      | |
+ (       | |
+ |       | |
+ |       | |
+ |       | |
+ |       | |
+
+Anesthesia Considerations:
+- Induction: Propofol (2-3 mg/kg IV) or ketamine (4-5 mg/kg IM) for induction.
+- Maintenance: Waterproof delivery system for inhalant anesthetics (isoflurane or sevoflurane).
+- Physiological considerations: Dual-environment support (air and water), unique thermoregulation.
+- Monitoring: Waterproof monitoring equipment for vital signs, especially oxygen saturation.
+- Recovery: Provide a shallow water environment with supplemental oxygen.
+- Special considerations: Scale-friendly positioning, careful electrolyte balance monitoring.
+
+Summary Table Row:
+Mermaid | Propofol (2-3 mg/kg IV) or ketamine (4-5 mg/kg IM) for induction, waterproof delivery of isoflurane or sevoflurane | Dual-environment physiology, unique thermoregulation | Shallow water recovery environment, waterproof monitoring equipment, monitor electrolyte balance
