@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO HubLab 🐕‍🦺 - Guide Management</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Guide Management in LEGO HubLab 🐕‍🦺</h1>
+
+    <pre class="ascii-art">
+      _____
+     /     \    LEGO HubLab
+    /       \   Guide Management
+   /  /\ /\  \  System
+  /  /  V  \  \ 
+ /  /       \  \
+/  /  GUIDE  \  \
+^^^^^^^^^^^^^^^^^^^^
+    </pre>
+
+    <h2>1. Accessing the Maintenance Page</h2>
+    <pre class="ascii-art">
+    +----------------+
+    |   Password:    |
+    |  ************  |
+    |   [  Login  ]  |
+    +----------------+
+    </pre>
+    <p>Navigate to <code>yourdomain.com/maintenance.html</code> and enter the secure password.</p>
+
+    <h2>2. Adding a New Guide</h2>
+    <pre class="ascii-art">
+    +-------------------+
+    | [+] Add New Guide |
+    +-------------------+
+          |
+          v
+    +-------------------+
+    | Title: [        ] |
+    | Lang:  [Select v] |
+    | Content:          |
+    | +---------------+ |
+    | |               | |
+    | |    Markdown   | |
+    | |     Editor    | |
+    | |               | |
+    | +---------------+ |
+    | [  Save Guide   ] |
+    +-------------------+
+    </pre>
+    <ol>
+        <li>Click "Add New Guide" button</li>
+        <li>Enter the guide title</li>
+        <li>Select the language (en, he, ar, ru)</li>
+        <li>Write your guide content in Markdown format</li>
+        <li>Click "Save Guide" to add it to the system</li>
+    </ol>
+
+    <h2>3. Editing Existing Guides</h2>
+    <pre class="ascii-art">
+    +--------------------+
+    | Guide List         |
+    |                    |
+    | 1. Lab Safety   [E]|
+    | 2. PCR Tech     [E]|
+    | 3. Data Vis     [E]|
+    |        ...         |
+    +--------------------+
+          |
+          v
+    +--------------------+
+    | Edit Guide         |
+    |                    |
+    | Title: [        ]  |
+    | Lang:  [Select v]  |
+    | Content:           |
+    | +----------------+ |
+    | |                | |
+    | |    Markdown    | |
+    | |     Editor     | |
+    | |                | |
+    | +----------------+ |
+    | [  Update Guide  ] |
+    +--------------------+
+    </pre>
+    <ol>
+        <li>Find the guide you want to edit in the list</li>
+        <li>Click the [E] button next to the guide title</li>
+        <li>Modify the title, language, or content as needed</li>
+        <li>Click "Update Guide" to save changes</li>
+    </ol>
+
+    <h2>4. Managing Guide Hierarchy</h2>
+    <pre class="ascii-art">
+    Root
+    ├── Anesthesia
+    │   ├── Anatomy
+    │   ├── Physiology
+    │   └── Pharmacology
+    ├── Lab
+    │   ├── Safety
+    │   └── Techniques
+    └── Statistics
+        ├── Basics
+        └── Advanced
+    </pre>
+    <p>Use the drag-and-drop interface to reorganize guides:</p>
+    <ul>
+        <li>Drag a guide to change its position</li>
+        <li>Drop it onto another guide to make it a sub-guide</li>
+        <li>Drop it between guides to reorder</li>
+    </ul>
+
+    <h2>5. Adding ASCII Art to Guides</h2>
+    <pre class="ascii-art">
+    Markdown:
+    ```ascii
+      _____
+     /     \
+    /  Lab  \
+   /  Safety \
+  /___________\
+    ```
+    </pre>
+    <p>Use triple backticks with 'ascii' to add ASCII art to your guides.</p>
+
+    <h2>6. Creating Interactive Elements</h2>
+    <pre class="ascii-art">
+    +-------------------+
+    | [?] Quiz Question |
+    +-------------------+
+    | ( ) Option A      |
+    | ( ) Option B      |
+    | ( ) Option C      |
+    | [    Submit    ]  |
+    +-------------------+
+    </pre>
+    <p>Use special markdown syntax for quizzes and interactive elements:</p>
+    <pre><code>
+    ???question "What is the boiling point of water?"
+    [ ] 0°C
+    [x] 100°C
+    [ ] 50°C
+    ???
+    </code></pre>
+
+    <h2>7. Localizing Guides</h2>
+    <pre class="ascii-art">
+    EN -----> [Translate] -----> HE
+    |                            |
+    v                            v
+    AR <---- [Translate] <----- RU
+    </pre>
+    <p>For each guide:</p>
+    <ol>
+        <li>Create versions in all supported languages (en, he, ar, ru)</li>
+        <li>Use the same file name with language suffix (e.g., lab-safety-en.html, lab-safety-he.html)</li>
+        <li>Ensure proper RTL formatting for Hebrew and Arabic versions</li>
+    </ol>
+
+    <h2>8. Publishing and Updating</h2>
+    <pre class="ascii-art">
+    [Draft] ---> [Review] ---> [Publish]
+      ^                           |
+      |                           |
+      +---------------------------+
+             [Update]
+    </pre>
+    <p>Guide lifecycle:</p>
+    <ol>
+        <li>Create or edit guide (Draft stage)</li>
+        <li>Submit for review</li>
+        <li>Publish when approved</li>
+        <li>Update as needed, returning to Draft stage</li>
+    </ol>
+
+    <div class="lego-block">
+        <h3>LEGO HubLab Tip</h3>
+        <p>Think of each guide as a unique LEGO brick. The maintenance page is your sorting tray, helping you organize and connect these bricks into a comprehensive knowledge structure!</p>
+    </div>
+
+    <script>
+        // Add any necessary JavaScript for interactivity
+        function simulateLogin() {
+            alert("Welcome to the Guide Management System!");
+        }
+
+        function simulateAddGuide() {
+            alert("New guide added successfully!");
+        }
+
+        function simulateEditGuide() {
+            alert("Guide updated successfully!");
+        }
+    </script>
+</body>
+</html>
