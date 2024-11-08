@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mythical Creatures Anatomy Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #444;
+        }
+        .creature-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        pre {
+            font-family: monospace;
+            white-space: pre;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .animated {
+            transition: transform 0.3s ease;
+        }
+        .animated:hover {
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="fade-in">Mythical Creatures Anatomy Guide</h1>
+
+    <div id="dragon" class="creature-container animated">
+        <h2>Dragon</h2>
+        <pre>
+,     .
+/(     )\               A
+((\\---//))             /_\
+ /\`   '/\            __/   \__
+//<\   />>\ ____     /  \___/  \
+//// \ /////\\\\\\   /  |     |  \
+////  \/////  \\\\\ /__|  ___  |__\
+/// /\ \ ///\\  \\\/   | /   \ |
+\\ /// \/ \\\\\  \/    |/     \|
+ \//// /\  \\\\\ \    /|\     /|\
+  ///  \/\  \\\\\/   / | \   / | \
+   /     \/   \    /__|__/\ /\__|__\
+                     /__\  |_|  /__\
+        </pre>
+        <p>Key features:</p>
+        <ul>
+            <li>Scales</li>
+            <li>Wings</li>
+            <li>Fire-breathing apparatus</li>
+            <li>Long, serpentine body</li>
+        </ul>
+        <button onclick="toggleAnesthesia('dragon')">Show Anesthesia Considerations</button>
+        <div id="dragon-anesthesia" class="hidden">
+            <p>Anesthesia considerations:</p>
+            <ul>
+                <li>Heat-resistant equipment for fire breath</li>
+                <li>Large-volume drug administration</li>
+                <li>Specialized intubation for long neck</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Repeat similar structure for Unicorn, Phoenix, Mermaid, and Griffin -->
+
+    <script>
+        function toggleAnesthesia(creature) {
+            var anesthesiaInfo = document.getElementById(creature + '-anesthesia');
+            if (anesthesiaInfo.classList.contains('hidden')) {
+                anesthesiaInfo.classList.remove('hidden');
+                anesthesiaInfo.classList.add('fade-in');
+            } else {
+                anesthesiaInfo.classList.add('hidden');
+                anesthesiaInfo.classList.remove('fade-in');
+            }
+        }
+
+        // Add hover effect to ASCII art
+        var creatureContainers = document.getElementsByClassName('creature-container');
+        for (var i = 0; i < creatureContainers.length; i++) {
+            creatureContainers[i].addEventListener('mouseover', function() {
+                this.querySelector('pre').style.color = 'blue';
+            });
+            creatureContainers[i].addEventListener('mouseout', function() {
+                this.querySelector('pre').style.color = 'black';
+            });
+        }
+    </script>
+</body>
+</html>
