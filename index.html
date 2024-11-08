@@ -3,112 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Guides Hub</title>
-    <style>
-        /* Add your CSS styles here */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 0.5rem;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        main {
-            padding: 20px;
-        }
-    </style>
+    <title>LEGO HubLab 🐕‍🦺 Maintenance Console</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Medical Guides Hub</h1>
-    </header>
-    
-    <nav>
-        <ul id="navigation">
-            <!-- Navigation items will be dynamically inserted here -->
-        </ul>
-    </nav>
-    
-    <main id="content">
-        <!-- Content will be loaded here -->
-    </main>
+    <div class="console">
+        <header>
+            <h1>LEGO HubLab 🐕‍🦺 Maintenance Console</h1>
+            <nav>
+                <button>🏠</button>
+                <button>📚</button>
+                <button>🧪</button>
+                <button>📊</button>
+                <button>✏️</button>
+                <button>🌐</button>
+                <button>🔧</button>
+                <button>💾</button>
+                <button>❓</button>
+            </nav>
+        </header>
 
-    <script>
-        // Define your guides here: 
-        //Create a new HTML file for your guide (e.g., new-guide.html) in the same directory as your index.html.
-        //In the index.html file, find the guides array in the <script> section.
-        //Add a new object to the guides array following this format:
-        //{ id: 'new-guide-id', title: 'New Guide Title', file: 'new-guide.html' },
-        const guides = [
-            { id: 'home', title: 'Home', file: 'home.html' },
-            { id: 'New Guide Guide', title: 'New Guide Guide 😎', file: 'NewGuideGuide.html' },
-            { id: 'neurology', title: 'Neurology', file: 'neurology.html' },
-            { id: 'pediatrics', title: 'Pediatrics', file: 'pediatrics.html' },
-            // Add more guides here
-            // { id: 'new-guide-id', title: 'New Guide Title', file: 'new-guide-file.html' },
-        ];
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <label for="light-mode">Light Mode</label>
+            <input type="checkbox" id="mode-switch" checked />
+            <label for="dark-mode">Dark Mode</label>
+        </div>
 
-        // Function to generate navigation menu
-        function generateNavigation() {
-            const nav = document.getElementById('navigation');
-            guides.forEach(guide => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = `#${guide.id}`;
-                a.textContent = guide.title;
-                li.appendChild(a);
-                nav.appendChild(li);
-            });
-        }
+        <!-- Main Sections -->
+        <main>
+            <!-- Guide Management Section -->
+            <section class="guide-management">
+                <h2>Guide Management</h2>
+                <div class="guide-actions">
+                    <button class="vibrating">➕ Add New Guide</button>
+                    <button class="vibrating">📝 Edit Guide</button>
+                    <button class="vibrating">🗑️ Delete Guide</button>
+                    <button class="vibrating">🔍 Search Guides</button>
+                    <p>Current Guides: 42 | Last Updated: 2023-05-1</p>
+                </div>
+            </section>
 
-        // Function to load content
-        function loadContent(guideId) {
-            const guide = guides.find(g => g.id === guideId);
-            if (guide) {
-                fetch(guide.file)
-                    .then(response => response.text())
-                    .then(html => {
-                        document.getElementById('content').innerHTML = html;
-                    })
-                    .catch(error => {
-                        console.error('Error loading content:', error);
-                    });
-            } else {
-                document.getElementById('content').innerHTML = '<h2>Guide not found</h2>';
-            }
-        }
+            <!-- Quick Add Multiple Guides Section -->
+            <section class="quick-add">
+                <h2>Quick Add Multiple Guides</h2>
+                <form id="quick-add-form">
+                    <input type="text" placeholder="Title" id="guide-title">
+                    <select id="guide-lang">
+                        <option value="">Lang: Select...</option>
+                        <!-- Add more language options here -->
+                    </select>
+                    <select id="guide-category">
+                        <option value="">Category: Select...</option>
+                        <!-- Add more categories here -->
+                    </select>
+                    <textarea placeholder="Content"></textarea><br />
+                    <div class="form-buttons">
+                        <button type="submit">➕ Add Another Guide</button>
+                        <button type="submit">💾 Save All Guides</button>
+                    </div>
+                </form>
+            </section>
 
-        // Event listener for hash changes
-        window.addEventListener('hashchange', () => {
-            const guideId = window.location.hash.slice(1) || 'home';
-            loadContent(guideId);
-        });
+            <!-- Category Management Section -->
+            <section class="category-management">
+                <h2>Category Management</h2>
+                <div class="category-actions">
+                    <button class="vibrating">➕ Add Category</button>
+                    <button class="vibrating">🌳 Manage Hierarchy</button>
+                    <p>Total Categories: 12</p>
+                </div>
+            </section>
 
-        // Initial setup
-        generateNavigation();
-        loadContent('home');
-    </script>
+            <!-- ASCII Art Generator Section -->
+            <section class="ascii-generator">
+                <h2>ASCII Art Generator 🎨</h2>
+                Text: 
+                <input type="text" id="ascii-text" placeholder="Enter text..."><br />
+                Style:
+                <select id="ascii-style">
+                    <!-- Add more styles here -->
+                    <option value="">Standard Style</option>
+                </select><br />
+                Colorize: 
+                [🔴 Red] [🟢 Green] [🔵 Blue] [🟡 Yellow] [🟣 Purple]
+                
+                <!-- ASCII Art Preview -->
+                <pre id="ascii-preview" class="ascii-preview"></pre><br />
+                
+                <!-- Buttons for ASCII Art actions -->
+                [📋 Copy] [💾 Save as Guide Decoration]
+            </section>
+
+        </main>
+
+        <!-- Footer with additional options -->
+        <footer class="footer-actions">
+            [💡 Tips] [📊 Analytics] [👥 User Management] [🔒 Logout]
+        </footer>
+
+        <!-- Message Bar with Color Picker -->
+        <div class="message-bar">
+            💬 Type your command here... 
+            [Send]
+            
+            <!-- Vibrant Color Picker -->
+            Vibrant Colors:
+            [🔴 Red ] [🟢 Green ] [🔵 Blue ] 
+            [🟡 Yellow ] [🟣 Purple ]
+        </div>
+
+    </div>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+
 </body>
 </html>
