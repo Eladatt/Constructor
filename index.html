@@ -3,92 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGO HubLab 🐕‍🦺 Maintenance Console</title>
+    <title>The Magnificent Animated Colorful 6 Creatures</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="console">
-        <header>
-            <h1>LEGO HubLab 🐕‍🦺 Maintenance Console</h1>
-            <nav>
-                <button>🏠</button>
-                <button>📚</button>
-                <button>🧪</button>
-                <button>📊</button>
-                <button>✏️</button>
-                <button>🌐</button>
-                <button id="toggle-mode">🌞/🌙</button> <!-- Light/Dark Mode Toggle -->
-                <button>💾</button>
-                <button>❓</button>
-            </nav>
-        </header>
-
-        <!-- Main Sections -->
-        <main>
-            <!-- Guide Management Section -->
-            <section class="guide-management">
-                <h2>Guide Management</h2>
-                <button id="add-guide-btn">➕ Add New Guide</button>
-                <div id="guide-list"></div> <!-- List of guides will be dynamically loaded -->
-            </section>
-
-            <!-- Quick Add Multiple Guides Section -->
-            <section class="quick-add">
-                <h2>Quick Add Multiple Guides</h2>
-                <form id="add-guides-form">
-                    <input type="text" placeholder="Title" id="guide-title">
-                    <select id="guide-lang">
-                        <option value="en">English</option>
-                        <option value="he">Hebrew</option>
-                        <option value="ar">Arabic</option>
-                        <option value="ru">Russian</option>
-                    </select>
-
-                    <!-- Category Dropdown -->
-                    <select id="guide-category"></select>
-
-                    <!-- Content Area -->
-                    <textarea placeholder="Content (Markdown format)" id="guide-content"></textarea>
-
-                    <!-- Add Another & Save Buttons -->
-                    <div class="buttons">
-                        <button type="button" id="add-another-guide">➕ Add Another</button>
-                        <button type="submit">💾 Save All Guides</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- System Status Section -->
-            <section class="system-status">
-                <h2>System Status & Recent Activity</h2>
-                Guides: 42 | Categories: 12 | Languages: 4  
-                Storage Usage: 45% | Performance Health 📈 : 92%  
-                
-                <!-- Recent Activity Log -->
-                Recent Activity:
-                • New guide "PCR Basics" added (2m ago)  
-                • Category "Lab Tech" renamed (1h ago)  
-            </section>
-
-        </main>
-
-        <!-- Message Bar with Color Picker -->
-        <div class="message-bar">
-            <input type="text" placeholder="Type your command here..." id="message-input">
-            <div class="color-picker">
-                <!-- Color Buttons -->
-                <span class="color-btn" style="background-color: #FF00FF;"></span>
-                <span class="color-btn" style="background-color: #00FFFF;"></span>
-                <span class="color-btn" style="background-color: #00FF00;"></span>
-                <!-- Send Button -->
-                <button id="send-message">Send 💬</button>
+    <header>
+        <h1 id="main-title">The Magnificent Animated Colorful 6 Creatures</h1>
+        <h2 id="subtitle">How to Anesthetize Them Safely</h2>
+        <div id="language-selector">
+            <button id="lang-toggle">Select Language</button>
+            <div id="lang-options" class="hidden">
+                <button data-lang="en">English</button>
+                <button data-lang="he">עברית</button>
+                <button data-lang="ar">العربية</button>
+                <button data-lang="ru">Русский</button>
             </div>
         </div>
-
-    </div>
-
-    <!-- JavaScript File -->
-    <script src="script.js"></script>
-
+    </header>
+    <nav id="creature-nav">
+        <button data-creature="dragon">Dragon</button>
+        <button data-creature="unicorn">Unicorn</button>
+        <button data-creature="phoenix">Phoenix</button>
+        <button data-creature="mermaid">Mermaid</button>
+        <button data-creature="griffin">Griffin</button>
+        <button data-creature="brain">Brain</button>
+    </nav>
+    <main id="content">
+        <div id="dragon" class="creature">
+            <h2>Dragon</h2>
+            <pre id="dragon-art" class="ascii-art"></pre>
+            <div class="anesthesia-info"></div>
+        </div>
+        <div id="unicorn" class="creature">
+            <h2>Unicorn</h2>
+            <pre id="unicorn-art" class="ascii-art"></pre>
+            <div class="anesthesia-info"></div>
+        </div>
+        <div id="phoenix" class="creature">
+            <h2>Phoenix</h2>
+            <pre id="phoenix-art" class="ascii-art"></pre>
+            <div class="anesthesia-info"></div>
+        </div>
+        <div id="mermaid" class="creature">
+            <h2>Mermaid</h2>
+            <pre id="mermaid-art" class="ascii-art"></pre>
+            <div class="anesthesia-info"></div>
+        </div>
+        <div id="griffin" class="creature">
+            <h2>Griffin</h2>
+            <pre id="griffin-art" class="ascii-art"></pre>
+            <div class="anesthesia-info"></div>
+        </div>
+        <div id="brain" class="creature">
+            <h2>Brain</h2>
+            <pre id="brain-art" class="ascii-art"></pre>
+            <div class="anesthesia-info"></div>
+        </div>
+    </main>
+    <aside id="small-animations">
+        <h3>Small Animations</h3>
+        <pre id="hopping-bunny" class="ascii-art"></pre>
+        <pre id="waving-bear" class="ascii-art"></pre>
+        <pre id="blooming-flower" class="ascii-art"></pre>
+        <pre id="blinking-cat" class="ascii-art"></pre>
+    </aside>
+    <script src="translations.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
