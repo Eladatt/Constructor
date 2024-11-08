@@ -1,0 +1,23 @@
+ASCII Art:
+\||/
+                |  @___oo
+      /\  /\   / (__,,,,|
+     ) /^\) ^\/ _)
+     )   /^\/ _)
+     )   _ /  / _)
+ /\  )/\/ ||  | )_)
+<  >      |(,,) )__)
+ ||      /    \)___)\
+ | \____(      )___) )___
+  \______(_______;;; __;;;
+
+Anesthesia Considerations:
+- Induction: Propofol (1.5-2.5 mg/kg IV) for rapid induction and quick recovery.
+- Maintenance: Isoflurane or sevoflurane with oxygen. Consider using dexmedetomidine for its neuroprotective effects.
+- Physiological considerations: Maintain cerebral blood flow and manage intracranial pressure.
+- Monitoring: Continuous EEG monitoring, cerebral oximetry, and intracranial pressure monitoring when applicable.
+- Recovery: Close monitoring in PACU, especially for oxygenation, ventilation, and potential cognitive effects.
+- Special considerations: Use of neuroprotective strategies, careful titration of anesthetics to maintain optimal cerebral perfusion.
+
+Summary Table Row:
+Brain | Propofol (1.5-2.5 mg/kg IV) for induction, isoflurane or sevoflurane with dexmedetomidine for maintenance | Sensitive to changes in cerebral blood flow and intracranial pressure | Close PACU monitoring, continuous EEG and cerebral oximetry, neuroprotective strategies
