@@ -3,133 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mythical Creatures Anatomy Guide</title>
+    <title>ASCII Animations</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        h2 {
-            color: #444;
-        }
-        .creature-container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        pre {
+            background-color: #000;
+            color: #fff;
             font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .animation {
+            width: 100px;
+            height: 100px;
+            font-size: 10px;
+            line-height: 10px;
             white-space: pre;
-            background-color: #f4f4f4;
+            text-align: center;
+            background-color: #111;
             padding: 10px;
             border-radius: 5px;
-            overflow-x: auto;
         }
-        .animated {
-            transition: transform 0.3s ease;
+        @keyframes hop {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-        .animated:hover {
-            transform: scale(1.05);
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes bloom {
+            0% { transform: scale(0.5); }
+            100% { transform: scale(1); }
         }
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
-        .hidden {
-            display: none;
-        }
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #45a049;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <h1 class="fade-in">Mythical Creatures Anatomy Guide</h1>
-
-    <div id="dragon" class="creature-container animated">
-        <h2>Dragon</h2>
-        <pre>
-,     .
-/(     )\               A
-((\\---//))             /_\
- /\`   '/\            __/   \__
-//<\   />>\ ____     /  \___/  \
-//// \ /////\\\\\\   /  |     |  \
-////  \/////  \\\\\ /__|  ___  |__\
-/// /\ \ ///\\  \\\/   | /   \ |
-\\ /// \/ \\\\\  \/    |/     \|
- \//// /\  \\\\\ \    /|\     /|\
-  ///  \/\  \\\\\/   / | \   / | \
-   /     \/   \    /__|__/\ /\__|__\
-                     /__\  |_|  /__\
-        </pre>
-        <p>Key features:</p>
-        <ul>
-            <li>Scales</li>
-            <li>Wings</li>
-            <li>Fire-breathing apparatus</li>
-            <li>Long, serpentine body</li>
-        </ul>
-        <button onclick="toggleAnesthesia('dragon')">Show Anesthesia Considerations</button>
-        <div id="dragon-anesthesia" class="hidden">
-            <p>Anesthesia considerations:</p>
-            <ul>
-                <li>Heat-resistant equipment for fire breath</li>
-                <li>Large-volume drug administration</li>
-                <li>Specialized intubation for long neck</li>
-            </ul>
-        </div>
+    <div class="container">
+        <div id="bunny" class="animation"></div>
+        <div id="bear" class="animation"></div>
+        <div id="flower" class="animation"></div>
+        <div id="cat" class="animation"></div>
     </div>
 
-    <!-- Repeat similar structure for Unicorn, Phoenix, Mermaid, and Griffin -->
-
     <script>
-        function toggleAnesthesia(creature) {
-            var anesthesiaInfo = document.getElementById(creature + '-anesthesia');
-            if (anesthesiaInfo.classList.contains('hidden')) {
-                anesthesiaInfo.classList.remove('hidden');
-                anesthesiaInfo.classList.add('fade-in');
-            } else {
-                anesthesiaInfo.classList.add('hidden');
-                anesthesiaInfo.classList.remove('fade-in');
-            }
+        const bunnyFrames = [
+            "  /\\ /\\  \n (=^.^=) \n (') (') ",
+            "  /\\ /\\  \n (=^.^=) \n (\")(\")",
+            "  /\\ /\\  \n (=^.^=) \n (') (') ",
+            "  /\\ /\\  \n (=^.^=) \n (\")(\")",
+            "  /\\ /\\  \n (=^.^=) \n (') (') "
+        ];
+
+        const bearFrames = [
+            " ʕ•ᴥ•ʔ \n /    \\ \n |    | ",
+            " ʕ•ᴥ•ʔ \n /    | \n |    \\ ",
+            " ʕ•ᴥ•ʔ \n |    / \n \\    | ",
+            " ʕ•ᴥ•ʔ \n \\    \\ \n |    | ",
+            " ʕ•ᴥ•ʔ \n /    \\ \n |    | "
+        ];
+
+        const flowerFrames = [
+            "   @   \n  @ @  \n @ @ @ ",
+            "   #   \n  # #  \n # # # ",
+            "   *   \n  * *  \n * * * ",
+            "   &   \n  & &  \n & & & ",
+            "   %   \n  % %  \n % % % "
+        ];
+
+        const catFrames = [
+            "/\\___/\\\n(=^.^=)\n(\")_(\")",
+            "/\\___/\\\n(-^.^-)\n(\")_(\")",
+            "/\\___/\\\n(=^.^=)\n(\")_(\")",
+            "/\\___/\\\n(-^.^-)\n(\")_(\")",
+            "/\\___/\\\n(=^.^=)\n(\")_(\")"
+        ];
+
+        function animateASCII(element, frames, animationName) {
+            let index = 0;
+            setInterval(() => {
+                element.innerHTML = frames[index];
+                element.style.animation = `${animationName} 0.5s`;
+                index = (index + 1) % frames.length;
+            }, 200);
         }
 
-        // Add hover effect to ASCII art
-        var creatureContainers = document.getElementsByClassName('creature-container');
-        for (var i = 0; i < creatureContainers.length; i++) {
-            creatureContainers[i].addEventListener('mouseover', function() {
-                this.querySelector('pre').style.color = 'blue';
-            });
-            creatureContainers[i].addEventListener('mouseout', function() {
-                this.querySelector('pre').style.color = 'black';
-            });
+        function applyColorTransform(element, hue) {
+            element.style.color = `hsl(${hue}, 100%, 50%)`;
+            setInterval(() => {
+                hue = (hue + 10) % 360;
+                element.style.color = `hsl(${hue}, 100%, 50%)`;
+            }, 100);
         }
+
+        const bunny = document.getElementById('bunny');
+        const bear = document.getElementById('bear');
+        const flower = document.getElementById('flower');
+        const cat = document.getElementById('cat');
+
+        animateASCII(bunny, bunnyFrames, 'hop');
+        animateASCII(bear, bearFrames, 'wave');
+        animateASCII(flower, flowerFrames, 'bloom');
+        animateASCII(cat, catFrames, 'blink');
+
+        applyColorTransform(bunny, 0);
+        applyColorTransform(bear, 90);
+        applyColorTransform(flower, 180);
+        applyColorTransform(cat, 270);
     </script>
 </body>
 </html>
