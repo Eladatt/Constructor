@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebration Station - LEGO HubLab</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Celebration Station</h1>
+        
+        <pre class="ascii-art">
+   _____      _      _               _   _             
+  / ____|    | |    | |             | | (_)            
+ | |     ___ | | ___| |__  _ __ __ _| |_ _  ___  _ __  
+ | |    / _ \| |/ _ \ '_ \| '__/ _` | __| |/ _ \| '_ \ 
+ | |___| (_) | |  __/ |_) | | | (_| | |_| | (_) | | | |
+  \_____\___/|_|\___|_.__/|_|  \__,_|\__|_|\___/|_| |_|
+        </pre>
+
+        <h2>Acknowledge Team Achievements</h2>
+        <form id="celebrationForm">
+            <label for="teamMember">Team Member:</label>
+            <input type="text" id="teamMember" name="teamMember" required>
+            
+            <label for="achievement">Achievement:</label>
+            <textarea id="achievement" name="achievement" required></textarea>
+            
+            <button type="submit">Celebrate!</button>
+        </form>
+
+        <div id="celebrations"></div>
+    </div>
+
+    <script>
+        document.getElementById('celebrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const teamMember = document.getElementById('teamMember').value;
+            const achievement = document.getElementById('achievement').value;
+            const celebration = `🎉 Congratulations to ${teamMember} for ${achievement}!`;
+            const celebrationElement = document.createElement('p');
+            celebrationElement.textContent = celebration;
+            document.getElementById('celebrations').appendChild(celebrationElement);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
