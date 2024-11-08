@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGO HubLab 🐕‍🦺 - ASCII Art Animations</title>
+    <title>LEGO HubLab 🐕‍🦺</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,30 +15,27 @@
             </div>
             <button id="sidebarToggle">☰</button>
             <ul class="nav-links">
-                <li><a href="#" data-page="home">🏠 Home</a></li>
-                <li><a href="#" data-page="animations">🎭 Animations</a></li>
-                <li><a href="#" data-page="add-animation">➕ Add Animation</a></li>
+                <li><a href="#home">🏠 Home</a></li>
+                <li><a href="#lab-safety">🧪 Lab Safety</a></li>
+                <li><a href="#analyzing">🔬 Analyzing</a></li>
+                <li><a href="#visualize">📊 Visualize</a></li>
+                <li><a href="#statistics">📐 Statistics</a></li>
+                <li><a href="#scientific-writing">✍️ Scientific Writing</a></li>
+                <li><a href="#resources">📚 Resources</a></li>
+                <li><a href="#lab-chatter">💬 Lab Chatter</a></li>
+                <li><a href="#celebration-station">🎉 Celebration Station</a></li>
             </ul>
         </nav>
         <main id="content">
-            <div id="home" class="page">
+            <div id="animation-container"></div>
+            <div id="main-content">
                 <h1>Welcome to LEGO HubLab 🐕‍🦺</h1>
-                <p>Explore our ASCII art animations!</p>
-                <div id="random-animation"></div>
+                <p>Select a topic from the sidebar to get started!</p>
             </div>
-            <div id="animations" class="page" style="display:none;">
-                <h1>ASCII Art Animations</h1>
-                <div id="animation-list"></div>
-            </div>
-            <div id="add-animation" class="page" style="display:none;">
-                <h1>Add New Animation</h1>
-                <form id="new-animation-form">
-                    <label for="animation-name">Animation Name:</label>
-                    <input type="text" id="animation-name" required>
-                    <label for="animation-frames">Animation Frames (one frame per line):</label>
-                    <textarea id="animation-frames" rows="10" required></textarea>
-                    <button type="submit">Add Animation</button>
-                </form>
+            <div id="new-animation-form">
+                <h3>Add New Animation</h3>
+                <textarea id="new-animation-input" rows="10" cols="50"></textarea>
+                <button id="add-animation-btn">Add Animation</button>
             </div>
         </main>
     </div>
