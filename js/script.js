@@ -1,30 +1,38 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
-  // Mode switch functionality
-  const modeSwitch = document.getElementById('mode-switch');
-  
-  modeSwitch.addEventListener('change', function () {
-      if (this.checked) {
-          document.body.classList.add('light-mode');
-          document.body.classList.remove('dark-mode');
-      } else {
-          document.body.classList.add('dark-mode');
-          document.body.classList.remove('light-mode');
-      }
-  });
+   // Dark/Light Mode Toggle
+   const toggleModeButton = document.getElementById('toggle-mode');
+   toggleModeButton.addEventListener('click', function() {
+       document.body.classList.toggle('dark-mode');
+   });
 
-  // Vibrant color picker functionality
-  const messageInput = document.querySelector('.message-bar input');
-  
-  const colorButtons = document.querySelectorAll('.color-picker .color');
-  
-  let currentColor = '#333'; // Default color
-  
-  colorButtons.forEach(button => {
-      button.addEventListener('click', function () {
-          currentColor = this.style.backgroundColor;
-          messageInput.style.color = currentColor; // Change input text color
-      });
-  });
+   // Message Bar Functionality
+   const messageInput = document.getElementById('message-input');
+   const sendMessageButton = document.getElementById('send-message');
+   const colorButtons = document.querySelectorAll('.color-btn');
+   let currentColor = '#000000'; // Default black color
 
+   // Set Message Input Color
+   colorButtons.forEach(button => {
+       button.addEventListener('click', function() {
+           currentColor = this.style.backgroundColor; // Set current color to selected button's color
+           messageInput.style.color = currentColor; // Change input text color
+       });
+   });
+
+   // Send Message Action
+   sendMessageButton.addEventListener('click', function() {
+       const message = messageInput.value.trim();
+       if (message !== '') {
+           console.log(`Message Sent! Text Color is ${currentColor}: ${message}`);
+           messageInput.value = ''; // Clear input after sending
+       }
+   });
+
+   // Add Another Guide Functionality
+   const addAnotherGuideButton = document.getElementById('add-another-guide');
+   addAnotherGuideButton.addEventListener('click', function() {
+       alert("Add another guide functionality coming soon!");
+       // You can add more logic here to dynamically add fields to add multiple guides at once.
+   });
 });
