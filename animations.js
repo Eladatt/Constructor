@@ -1,5 +1,5 @@
-const animations = {
-  winkingCat: [
+const animationFrames = {
+    winkingCat: [
     `
  /\\___/\\   
 (  o o  ) 
@@ -36,8 +36,7 @@ const animations = {
  (_____)  
 `
   ],
-  
-  jumpingRabbit: [
+    jumpingRabbit: [
     `
   (\\ /)   
  ( . .)   
@@ -443,6 +442,24 @@ const animations = {
   ]
 };
 
+    // Add more animations here
+};
+
+function animateAsciiArt(elementId, animationName) {
+    const element = document.getElementById(elementId);
+    let frameIndex = 0;
+    const frames = animationFrames[animationName];
+    
+    function updateFrame() {
+        element.textContent = frames[frameIndex];
+        frameIndex = (frameIndex + 1) % frames.length;
+    }
+
+    setInterval(updateFrame, 200);
+}
+  
+  
+  
 function animateAsciiArt(elementId, animationName) {
   const element = document.getElementById(elementId);
   let frameIndex = 0;
