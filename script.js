@@ -1,51 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const languageSelector = document.getElementById('language');
-    const animationContainer = document.getElementById('animation-container');
-    const content = document.getElementById('content');
 
-    sidebarToggle.addEventListener('click', function() {
-        sidebar.classList.toggle('collapsed');
-    });
+   // Dark/Light Mode Toggle
+   const toggleModeButton = document.getElementById('toggle-mode');
+   toggleModeButton.addEventListener('click', function() {
+       document.body.classList.toggle('dark-mode');
+   });
 
-    languageSelector.addEventListener('change', function() {
-        changeLanguage(this.value);
-    });
+   // Message Bar Functionality
+   const messageInput = document.getElementById('message-input');
+   const sendMessageButton = document.getElementById('send-message');
+   const colorButtons = document.querySelectorAll('.color-btn');
+   let currentColor = '#000000'; // Default black color
 
-    function changeLanguage(lang) {
-        document.documentElement.lang = lang;
-        document.documentElement.dir = ['ar', 'he'].includes(lang) ? 'rtl' : 'ltr';
-        loadContent(window.location.hash.slice(1) || 'home', lang);
-    }
+   // Set Message Input Color
+   colorButtons.forEach(button => {
+       button.addEventListener('click', function() {
+           currentColor = this.style.backgroundColor; // Set current color to selected button's color
+           messageInput.style.color = currentColor; // Change input text color
+       });
+   });
 
-    function loadContent(page, lang) {
-        fetch(`pages/${page}-${lang}.html`)
-            .then(response => response.text())
-            .then(html => {
-                content.innerHTML = html;
-            })
-            .catch(error => {
-                console.error('Error loading content:', error);
-                content.innerHTML = '<p>Error loading content. Please try again.</p>';
-            });
-    }
+   // Send Message Action
+   sendMessageButton.addEventListener('click', function() {
+       const message = messageInput.value.trim();
+       if (message !== '') {
+           console.log(`Message Sent! Text Color is ${currentColor}: ${message}`);
+           messageInput.value = ''; // Clear input after sending
+       }
+   });
 
-    window.addEventListener('hashchange', function() {
-        const page = window.location.hash.slice(1) || 'home';
-        const lang = languageSelector.value;
-        loadContent(page, lang);
-    });
-
-    // Initial load
-    loadContent('home', languageSelector.value);
-
-    // Start random animation
-    startRandomAnimation();
+   // Add Another Guide Functionality
+   const addAnotherGuideButton = document.getElementById('add-another-guide');
+   addAnotherGuideButton.addEventListener('click', function() {
+       alert("Add another guide functionality coming soon!");
+       // You can add more logic here to dynamically add fields to add multiple guides at once.
+   });
 });
-
-function startRandomAnimation() {
-    const animations = Object.keys(animationFrames);
-    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-    animateAsciiArt('animation-container', randomAnimation);
-}
