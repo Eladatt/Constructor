@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance - LEGO HubLab</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Maintenance Page</h1>
+        
+        <div id="loginForm">
+            <label for="password">Password:</label>
+            <input type="password" id="ATERET!">
+            <button onclick="login()">Login</button>
+        </div>
+
+        <div id="maintenanceContent" style="display: none;">
+            <h2>Add/Remove Instructors</h2>
+            <textarea id="instructorList" rows="10" cols="50"></textarea>
+            <button onclick="saveInstructors()">Save Changes</button>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const password = document.getElementById('password').value;
+            if (password === 'admin123') { // Replace with a secure password
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('maintenanceContent').style.display = 'block';
+                loadInstructors();
+            } else {
+                alert('Incorrect password');
+            }
+        }
+
+        function loadInstructors() {
+            // In a real application, you would load this from a server
+            const instructors = localStorage.getItem('instructors') || '';
+            document.getElementById('instructorList').value = instructors;
+        }
+
+        function saveInstructors() {
+            const instructors = document.getElementById('instructorList').value;
+            localStorage.setItem('instructors', instructors);
+            alert('Instructors list updated');
+        }
+    </script>
+</body>
+</html>
