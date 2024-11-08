@@ -58,7 +58,7 @@
         button:hover {
             background-color: #0056b3;
         }
-        input[type="text"], input[type="password"], textarea, select {
+        input[type="text"], textarea, select {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -83,22 +83,7 @@
     <div class="container">
         <h1>LEGO HubLab 🐕‍🦺 Maintenance Page</h1>
         
-        <div id="loginForm">
-            <h2>Login</h2>
-            <pre class="ascii-art">
-    +----------------+
-    |   Password:    |
-    |  ************  |
-    |   [  Login  ]  |
-    +----------------+
-            </pre>
-            <input type="password" id="password" placeholder="Enter password">
-            <button onclick="login()">Login</button>
-        </div>
-
-        <div id="maintenanceContent" class="hidden">
-            <h2>Guide Management System</h2>
-            <pre class="ascii-art">
+        <pre class="ascii-art">
       _____
      /     \    LEGO HubLab
     /       \   Guide Management
@@ -107,123 +92,60 @@
  /  /       \  \
 /  /  GUIDE  \  \
 ^^^^^^^^^^^^^^^^^^^^
-            </pre>
-            
-            <div class="step">
-                <h3>Step 1: Lay the Foundation</h3>
-                <button onclick="showSection('addCategory')">Add Main Category</button>
-                <div id="addCategory" class="hidden">
-                    <input type="text" id="categoryName" placeholder="Category Name">
-                    <button onclick="addCategory()">Add Category</button>
-                </div>
-                <div id="categoryList"></div>
+        </pre>
+        
+        <div class="step">
+            <h2>1. Manage Categories</h2>
+            <button onclick="showSection('addCategory')">Add Category</button>
+            <div id="addCategory" class="hidden">
+                <input type="text" id="categoryName" placeholder="Category Name">
+                <button onclick="addCategory()">Add Category</button>
             </div>
+            <div id="categoryList"></div>
+        </div>
 
-            <div class="step">
-                <h3>Step 2: Build the Walls (Add Guides)</h3>
-                <button onclick="showSection('addGuide')">Add New Guide</button>
-                <div id="addGuide" class="hidden">
-                    <input type="text" id="guideTitle" placeholder="Guide Title">
-                    <select id="guideCategory"></select>
-                    <textarea id="guideContent" rows="10" placeholder="Guide Content (Markdown format)"></textarea>
-                    <button onclick="addGuide()">Add Guide</button>
-                </div>
+        <div class="step">
+            <h2>2. Manage Guides</h2>
+            <button onclick="showSection('addGuide')">Add New Guide</button>
+            <div id="addGuide" class="hidden">
+                <input type="text" id="guideTitle" placeholder="Guide Title">
+                <select id="guideCategory"></select>
+                <textarea id="guideContent" rows="10" placeholder="Guide Content (Markdown format)"></textarea>
+                <button onclick="addGuide()">Add Guide</button>
             </div>
+        </div>
 
-            <div class="step">
-                <h3>Step 3: Create Rooms (Subcategories)</h3>
-                <button onclick="showSection('addSubcategory')">Add Subcategory</button>
-                <div id="addSubcategory" class="hidden">
-                    <select id="parentCategory"></select>
-                    <input type="text" id="subcategoryName" placeholder="Subcategory Name">
-                    <button onclick="addSubcategory()">Add Subcategory</button>
-                </div>
+        <div class="step">
+            <h2>3. Edit Existing Guides</h2>
+            <select id="editGuideSelect" onchange="loadGuideForEditing()">
+                <option value="">Select a guide to edit</option>
+            </select>
+            <div id="editGuideForm" class="hidden">
+                <input type="text" id="editGuideTitle">
+                <select id="editGuideCategory"></select>
+                <textarea id="editGuideContent" rows="10"></textarea>
+                <button onclick="updateGuide()">Update Guide</button>
             </div>
+        </div>
 
-            <div class="step">
-                <h3>Step 4: Add Decorations (ASCII Art)</h3>
-                <button onclick="showSection('addAsciiArt')">Add ASCII Art</button>
-                <div id="addAsciiArt" class="hidden">
-                    <select id="asciiArtGuide"></select>
-                    <textarea id="asciiArtContent" rows="10" placeholder="Paste ASCII art here"></textarea>
-                    <button onclick="addAsciiArt()">Add ASCII Art</button>
-                </div>
-            </div>
+        <div class="step">
+            <h2>4. Manage Menu Structure</h2>
+            <textarea id="menuStructure" rows="20"></textarea>
+            <button onclick="saveMenuStructure()">Save Menu Structure</button>
+        </div>
 
-            <div class="step">
-                <h3>Step 5: Install Interactive Features</h3>
-                <button onclick="showSection('addInteractive')">Add Interactive Element</button>
-                <div id="addInteractive" class="hidden">
-                    <select id="interactiveGuide"></select>
-                    <select id="interactiveType">
-                        <option value="quiz">Quiz</option>
-                        <option value="calculator">Calculator</option>
-                    </select>
-                    <textarea id="interactiveContent" rows="10" placeholder="Interactive element content"></textarea>
-                    <button onclick="addInteractiveElement()">Add Interactive Element</button>
-                </div>
-            </div>
-
-            <div class="step">
-                <h3>Step 6: Build Bridges (Create Links)</h3>
-                <button onclick="showSection('addLink')">Add Link Between Guides</button>
-                <div id="addLink" class="hidden">
-                    <select id="linkSource"></select>
-                    <select id="linkTarget"></select>
-                    <button onclick="addLink()">Create Link</button>
-                </div>
-            </div>
-
-            <div class="step">
-                <h3>Step 7: Make it Multilingual</h3>
-                <button onclick="showSection('addTranslation')">Add Translation</button>
-                <div id="addTranslation" class="hidden">
-                    <select id="translationGuide"></select>
-                    <select id="translationLanguage">
-                        <option value="en">English</option>
-                        <option value="he">Hebrew</option>
-                        <option value="ar">Arabic</option>
-                        <option value="ru">Russian</option>
-                    </select>
-                    <textarea id="translationContent" rows="10" placeholder="Translated content"></textarea>
-                    <button onclick="addTranslation()">Add Translation</button>
-                </div>
-            </div>
-
-            <div class="step">
-                <h3>Step 8: Polish and Refine</h3>
-                <button onclick="showSection('editGuide')">Edit Existing Guide</button>
-                <div id="editGuide" class="hidden">
-                    <select id="editGuideSelect"></select>
-                    <input type="text" id="editGuideTitle">
-                    <textarea id="editGuideContent" rows="10"></textarea>
-                    <button onclick="updateGuide()">Update Guide</button>
-                </div>
-            </div>
-
-            <div class="step">
-                <h3>Step 9: Expand and Grow</h3>
-                <button onclick="generateSiteMap()">Generate Site Map</button>
-                <div id="siteMap"></div>
-            </div>
+        <div class="step">
+            <h2>5. Export/Import Data</h2>
+            <button onclick="exportData()">Export Data</button>
+            <input type="file" id="importInput" accept=".json" onchange="importData(event)">
+            <button onclick="document.getElementById('importInput').click()">Import Data</button>
         </div>
     </div>
 
     <script>
         let guides = JSON.parse(localStorage.getItem('guides')) || [];
         let categories = JSON.parse(localStorage.getItem('categories')) || [];
-
-        function login() {
-            const password = document.getElementById('password').value;
-            if (password === 'admin123') { // Replace with a secure authentication method
-                document.getElementById('loginForm').classList.add('hidden');
-                document.getElementById('maintenanceContent').classList.remove('hidden');
-                loadCategories();
-                loadGuides();
-            } else {
-                alert('Incorrect password');
-            }
-        }
+        let menuStructure = JSON.parse(localStorage.getItem('menuStructure')) || {};
 
         function showSection(sectionId) {
             document.querySelectorAll('.hidden').forEach(el => el.classList.add('hidden'));
@@ -248,267 +170,108 @@
             alert('Guide added successfully!');
         }
 
-        function addSubcategory() {
-            const parentCategory = document.getElementById('parentCategory').value;
-            const name = document.getElementById('subcategoryName').value;
-            const category = categories.find(c => c.name === parentCategory);
-            if (category) {
-                category.subcategories.push(name);
-                localStorage.setItem('categories', JSON.stringify(categories));
-                loadCategories();
-                alert('Subcategory added successfully!');
-            }
+        function loadCategories() {
+            const categoryList = document.getElementById('categoryList');
+            const guideCategorySelect = document.getElementById('guideCategory');
+            const editGuideCategorySelect = document.getElementById('editGuideCategory');
+            
+            [categoryList, guideCategorySelect, editGuideCategorySelect].forEach(el => el.innerHTML = '');
+
+            categories.forEach(category => {
+                categoryList.innerHTML += `<p>${category.name}</p>`;
+                guideCategorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
+                editGuideCategorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
+            });
         }
 
-        function addAsciiArt() {
-            const guideId = document.getElementById('asciiArtGuide').value;
-            const asciiArt = document.getElementById('asciiArtContent').value;
-            const guide = guides.find(g => g.title === guideId);
+        function loadGuides() {
+            const editGuideSelect = document.getElementById('editGuideSelect');
+            editGuideSelect.innerHTML = '<option value="">Select a guide to edit</option>';
+            guides.forEach(guide => {
+                editGuideSelect.innerHTML += `<option value="${guide.title}">${guide.title}</option>`;
+            });
+        }
+
+        function loadGuideForEditing() {
+            const guideTitle = document.getElementById('editGuideSelect').value;
+            const guide = guides.find(g => g.title === guideTitle);
             if (guide) {
-                guide.asciiArt = asciiArt;
-                localStorage.setItem('guides', JSON.stringify(guides));
-                alert('ASCII art added successfully!');
-            }
-        }
-
-        function addInteractiveElement() {
-            const guideId = document.getElementById('interactiveGuide').value;
-            const type = document.getElementById('interactiveType').value;
-            const content = document.getElementById('interactiveContent').value;
-            const guide = guides.find(g => g.title === guideId);
-            if (guide) {
-                guide.interactiveElements = guide.interactiveElements || [];
-                guide.interactiveElements.push({ type, content });
-                localStorage.setItem('guides', JSON.stringify(guides));
-                alert('Interactive element added successfully!');
-            }
-        }
-
-        function addLink() {
-            const sourceId = document.getElementById('linkSource').value;
-            const targetId = document.getElementById('linkTarget').value;
-            const source = guides.find(g => g.title === sourceId);
-            const target = guides.find(g => g.title === targetId);
-            if (source && target) {
-                source.links = source.links || [];
-                source.links.push(targetId);
-                localStorage.setItem('guides', JSON.stringify(guides));
-                alert('Link added successfully!');
-            }
-        }
-
-        function addTranslation() {
-            const guideId = document.getElementById('translationGuide').value;
-            const language = document.getElementById('translationLanguage').value;
-            const content = document.getElementById('translationContent').value;
-            const guide = guides.find(g => g.title === guideId);
-            if (guide) {
-                guide.translations = guide.translations || {};
-                guide.translations[language] = content;
-                localStorage.setItem('guides', JSON.stringify(guides));
-                alert('Translation added successfully!');
+                document.getElementById('editGuideTitle').value = guide.title;
+                document.getElementById('editGuideCategory').value = guide.category;
+                document.getElementById('editGuideContent').value = guide.content;
+                document.getElementById('editGuideForm').classList.remove('hidden');
+            } else {
+                document.getElementById('editGuideForm').classList.add('hidden');
             }
         }
 
         function updateGuide() {
-            const guideId = document.getElementById('editGuideSelect').value;
+            const oldTitle = document.getElementById('editGuideSelect').value;
             const newTitle = document.getElementById('editGuideTitle').value;
+            const newCategory = document.getElementById('editGuideCategory').value;
             const newContent = document.getElementById('editGuideContent').value;
-            const guideIndex = guides.findIndex(g => g.title === guideId);
+            const guideIndex = guides.findIndex(g => g.title === oldTitle);
             if (guideIndex !== -1) {
-                guides[guideIndex].title = newTitle;
-                guides[guideIndex].content = newContent;
+                guides[guideIndex] = { title: newTitle, category: newCategory, content: newContent };
                 localStorage.setItem('guides', JSON.stringify(guides));
                 loadGuides();
                 alert('Guide updated successfully!');
             }
         }
 
-        function generateSiteMap() {
-            let siteMap = '<ul>';
-            categories.forEach(category => {
-                siteMap += `<li>${category.name}`;
-                if (category.subcategories.length > 0) {
-                    siteMap += '<ul>';
-                    category.subcategories.forEach(sub => {
-                        siteMap += `<li>${sub}</li>`;
-                    });
-                    siteMap += '</ul>';
-                }
-                siteMap += '</li>';
-            });
-            siteMap += '</ul>';
-            document.getElementById('siteMap').innerHTML = siteMap;
+        function loadMenuStructure() {
+            document.getElementById('menuStructure').value = JSON.stringify(menuStructure, null, 2);
         }
 
-        function loadCategories() {
-            const categoryList = document.getElementById('categoryList');
-            const guideCategorySelect = document.getElementById('guideCategory');
-            const parentCategorySelect = document.getElementById('parentCategory');
-            
-            categoryList.innerHTML = '';
-            guideCategorySelect.innerHTML = '';
-            parentCategorySelect.innerHTML = '';
-
-            categories.forEach(category => {
-                categoryList.innerHTML += `<p>${category.name}</p>`;
-                guideCategorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
-                parentCategorySelect.innerHTML += `<option value="${category.name}">${category.name}</option>`;
-            });
-        }
-
-        function loadGuides() {
-            const editGuideSelect = document.getElementById('editGuideSelect');
-            const asciiArtGuideSelect = document.getElementById('asciiArtGuide');
-            const interactiveGuideSelect = document.getElementById('interactiveGuide');
-            const linkSourceSelect = document.getElementById('linkSource');
-            const linkTargetSelect = document.getElementById('linkTarget');
-            const translationGuideSelect = document.getElementById('translationGuide');
-
-          [editGuideSelect, asciiArtGuideSelect, interactiveGuideSelect, linkSourceSelect, linkTargetSelect, translationGuideSelect].forEach(select => {
-    select.innerHTML = '';
-    guides.forEach(guide => {
-        const option = document.createElement('option');
-        option.value = guide.title;
-        option.textContent = guide.title;
-        select.appendChild(option);
-    });
-});
+        function saveMenuStructure() {
+            try {
+                const newStructure = JSON.parse(document.getElementById('menuStructure').value);
+                menuStructure = newStructure;
+                localStorage.setItem('menuStructure', JSON.stringify(menuStructure));
+                alert('Menu structure saved successfully!');
+            } catch (error) {
+                alert('Invalid JSON structure. Please check your input.');
             }
-
-// Call these functions when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    loadCategories();
-    loadGuides();
-});
-
-function generateSiteMap() {
-    let siteMap = '<ul>';
-    categories.forEach(category => {
-        siteMap += `<li>${category.name}`;
-        if (category.subcategories.length > 0) {
-            siteMap += '<ul>';
-            category.subcategories.forEach(sub => {
-                siteMap += `<li>${sub}</li>`;
-            });
-            siteMap += '</ul>';
         }
-        siteMap += '</li>';
-    });
-    siteMap += '</ul>';
-    document.getElementById('siteMap').innerHTML = siteMap;
-}
 
-// Function to reset form fields
-function resetForm(formId) {
-    document.getElementById(formId).reset();
-}
+        function exportData() {
+            const data = {
+                categories: categories,
+                guides: guides,
+                menuStructure: menuStructure
+            };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "lego_hublab_data.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
 
-// Add event listeners for form submissions
-document.getElementById('addGuide').addEventListener('submit', function(e) {
-    e.preventDefault();
-    addGuide();
-    resetForm('addGuide');
-});
+        function importData(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = JSON.parse(e.target.result);
+                categories = data.categories;
+                guides = data.guides;
+                menuStructure = data.menuStructure;
+                localStorage.setItem('categories', JSON.stringify(categories));
+                localStorage.setItem('guides', JSON.stringify(guides));
+                localStorage.setItem('menuStructure', JSON.stringify(menuStructure));
+                loadCategories();
+                loadGuides();
+                loadMenuStructure();
+                alert('Data imported successfully!');
+            };
+            reader.readAsText(file);
+        }
 
-document.getElementById('editGuideForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    updateGuide();
-    resetForm('editGuideForm');
-});
-
-// Add more event listeners for other forms...
-
-// Function to show/hide sections
-function toggleSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.classList.toggle('hidden');
-}
-
-// Add click event listeners to all section toggle buttons
-document.querySelectorAll('[data-toggle]').forEach(button => {
-    button.addEventListener('click', function() {
-        toggleSection(this.dataset.toggle);
-    });
-});
-
-// Function to display ASCII art preview
-function previewAsciiArt() {
-    const art = document.getElementById('asciiArtContent').value;
-    document.getElementById('asciiArtPreview').textContent = art;
-}
-
-// Add event listener for ASCII art preview
-document.getElementById('asciiArtContent').addEventListener('input', previewAsciiArt);
-
-// Function to add random color to ASCII art
-function addRandomColorToAsciiArt() {
-    const art = document.getElementById('asciiArtContent').value;
-    const coloredArt = art.split('').map(char => 
-        char !== ' ' ? `<span style="color: ${getRandomColor()}">${char}</span>` : char
-    ).join('');
-    document.getElementById('asciiArtPreview').innerHTML = coloredArt;
-}
-
-function getRandomColor() {
-    const colors = ['red', 'blue', 'green', 'purple', 'orange', 'cyan'];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
-
-// Add event listener for random color button
-document.getElementById('randomColorButton').addEventListener('click', addRandomColorToAsciiArt);
-
-// Function to export all data
-function exportData() {
-    const data = {
-        categories: categories,
-        guides: guides
-    };
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "lego_hublab_data.json");
-    document.body.appendChild(downloadAnchorNode);
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-}
-
-// Function to import data
-function importData(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const data = JSON.parse(e.target.result);
-        categories = data.categories;
-        guides = data.guides;
-        localStorage.setItem('categories', JSON.stringify(categories));
-        localStorage.setItem('guides', JSON.stringify(guides));
+        // Initialize the page
         loadCategories();
         loadGuides();
-        alert('Data imported successfully!');
-    };
-    reader.readAsText(file);
-}
-
-// Add event listeners for export and import buttons
-document.getElementById('exportButton').addEventListener('click', exportData);
-document.getElementById('importInput').addEventListener('change', importData);
-
-// Function to generate a random fun fact
-function generateFunFact() {
-    const funFacts = [
-        "The first LEGO bricks were made in 1949.",
-        "There are over 400 billion LEGO bricks in the world.",
-        "LEGO is the world's largest tire manufacturer by number of units produced.",
-        "The name 'LEGO' is derived from the Danish words 'leg godt', meaning 'play well'.",
-        "Six 2x4 LEGO bricks can be combined in 915,103,765 different ways."
-    ];
-    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-    document.getElementById('funFact').textContent = randomFact;
-}
-
-// Generate a fun fact when the page loads
-generateFunFact();
-
-// Refresh the fun fact every 24 hours
-setInterval(generateFunFact, 24 * 60 * 60 * 1000);
+        loadMenuStructure();
+    </script>
+</body>
+</html>
