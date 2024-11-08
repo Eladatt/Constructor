@@ -97,52 +97,41 @@ const translations = {
     }
 };
 
+// This function updates the text content of elements based on the selected language
 function updateTranslations(lang) {
+    // Update main title and subtitle
     document.getElementById('main-title').textContent = translations[lang].mainTitle;
     document.getElementById('subtitle').textContent = translations[lang].subtitle;
+
+    // Update language selector button
     document.getElementById('lang-toggle').textContent = translations[lang].selectLanguage;
 
-    const creatureButtons = document.querySelectorAll('#creature-nav button');
-    creatureButtons.forEach(button => {
-        button.textContent = translations[lang][button.dataset.creature];
+    // Update navigation buttons
+    const navButtons = document.querySelectorAll('#creature-nav button');
+    navButtons.forEach(button => {
+        const creature = button.dataset.creature;
+        button.textContent = translations[lang][creature];
     });
 
+    // Update creature titles
     const creatureTitles = document.querySelectorAll('.creature h2');
     creatureTitles.forEach(title => {
-        title.textContent = translations[lang][title.parentElement.id];
+        const creature = title.parentElement.id;
+        title.textContent = translations[lang][creature];
     });
 
+    // Update small animations title
     document.querySelector('#small-animations h3').textContent = translations[lang].smallAnimations;
 
-    // Update anesthesia info for each creature
-    updateAnesthesiaInfo('dragon', lang);
-    updateAnesthesiaInfo('unicorn', lang);
-    updateAnesthesiaInfo('phoenix', lang);
-    updateAnesthesiaInfo('mermaid', lang);
-    updateAnesthesiaInfo('griffin', lang);
-    updateAnesthesiaInfo('brain', lang);
+    // Update anesthesia information headers
+    const anesthesiaHeaders = document.querySelectorAll('.anesthesia-info h3');
+    anesthesiaHeaders.forEach(header => {
+        const creature = header.closest('.creature').id;
+        header.textContent = `${translations[lang].anesthesiaConsiderations} ${translations[lang][creature]}:`;
+    });
 
-    // Update summary panel
-    document.querySelector('#summary-panel h3').textContent = translations[lang].summaryPanelTitle;
-    const summaryHeaders = document.querySelectorAll('#summary-panel th');
-    summaryHeaders[1].textContent = translations[lang].pharmacology;
-    summaryHeaders[2].textContent = translations[lang].physiologicalConsiderations;
-    summaryHeaders[3].textContent = translations[lang].postAnesthesiaCare;
+    // Add more elements to update as needed
 }
 
-function updateAnesthesiaInfo(creature, lang) {
-    const anesthesiaInfo = document.querySelector(`#${creature} .anesthesia-info`);
-    const anesthesiaData = translations[lang][`${creature}Anesthesia`];
-
-    anesthesiaInfo.innerHTML = `
-        <h3>${translations[lang].anesthesiaConsiderations} ${translations[lang][creature]}:</h3>
-        <ul>
-            ${Object.entries(anesthesiaData).map(([key, value]) => `<li><strong>${translations[lang][key]}:</strong> ${value}</li>`).join('')}
-        </ul>
-    `;
-}
-
-// Set Hebrew as default language
-document.documentElement.lang = 'he';
-document.body.setAttribute('dir', 'rtl');
-updateTranslations('he');
+// Export the updateTranslations function so it can be used in other scripts
+window.updateTranslations = updateTranslations;
