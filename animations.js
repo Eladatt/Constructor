@@ -1,49 +1,7 @@
-const animations = [
-    // Blinking Snoopy
-    `   _____ 
-  /     \\
- /  o o  \\
-(  =^.^=  )
- \\  ---  /
-  \\_____/`,
-
-    // Waving Charlie Brown
-    `  ___
- /   \\
-| o o |
-(  ^  )
- \\___/
-  | |
- _| |_
-|     |
- \\___/`,
-
-    // Flying Snoopy on Doghouse
-    `   ___________
-  /           \\
- /  ___   ___  \\
-|  (o o) (- -)  |
- \\    <    >   /
-  \\___________/
-      |   |
-      |___|`,
-
-    // Typing Woodstock
-    `  ,~
- ('v')
-((___))
- ^   ^`,
-
-    // Growing Snoopy's Thought Bubble
-    `   _____ 
-  /     \\
- /  o o  \\
-(  =^.^=  )
- \\  ---  /
-  \\_____/
-    ( )
-   (   )
-  (     )`,
-
-    // Add more animations here...
-];
+const animations = {
+    pikachu: [/* Frames here */],
+    bulbasaur: [/* Frames here */],
+    charmander: [/* Frames here */],
+    squirtle: [/* Frames here */],
+    // Add more animations as needed
+};
