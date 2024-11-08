@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO HubLab 🐕‍🦺 - Maintenance Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-left: 3px solid #f36d33;
+            color: #666;
+            page-break-inside: avoid;
+            font-family: monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 1.6em;
+            max-width: 100%;
+            overflow: auto;
+            padding: 1em 1.5em;
+            display: block;
+            word-wrap: break-word;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LEGO HubLab 🐕‍🦺 Maintenance Page</h1>
+        
+        <div id="loginForm">
+            <h2>Login</h2>
+            <input type="password" id="password" placeholder="Enter password">
+            <button onclick="login()">Login</button>
+        </div>
+
+        <div id="maintenanceContent" class="hidden">
+            <h2>Guide Management</h2>
+            
+            <h3>Add New Guide</h3>
+            <input type="text" id="newGuideTitle" placeholder="Guide Title">
+            <select id="newGuideLanguage">
+                <option value="en">English</option>
+                <option value="he">Hebrew</option>
+                <option value="ar">Arabic</option>
+                <option value="ru">Russian</option>
+            </select>
+            <textarea id="newGuideContent" rows="10" placeholder="Guide Content (Markdown format)"></textarea>
+            <button onclick="addNewGuide()">Add Guide</button>
+
+            <h3>Edit Existing Guides</h3>
+            <select id="existingGuides" onchange="loadGuideForEditing()">
+                <option value="">Select a guide to edit</option>
+            </select>
+            <div id="editGuideForm" class="hidden">
+                <input type="text" id="editGuideTitle">
+                <select id="editGuideLanguage">
+                    <option value="en">English</option>
+                    <option value="he">Hebrew</option>
+                    <option value="ar">Arabic</option>
+                    <option value="ru">Russian</option>
+                </select>
+                <textarea id="editGuideContent" rows="10"></textarea>
+                <button onclick="updateGuide()">Update Guide</button>
+            </div>
+
+            <h3>Manage Menu Structure</h3>
+            <textarea id="menuStructure" rows="20"></textarea>
+            <button onclick="saveMenuStructure()">Save Menu Structure</button>
+        </div>
+    </div>
+
+    <script>
+        let guides = JSON.parse(localStorage.getItem('guides')) || [];
+        let menuStructure = JSON.parse(localStorage.getItem('menuStructure')) || {};
+
+        function login() {
+            const password = document.getElementById('password').value;
+            if (password === 'admin123') { // Replace with a secure authentication method
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('maintenanceContent').classList.remove('hidden');
+                loadExistingGuides();
+                loadMenuStructure();
+            } else {
+                alert('Incorrect password');
+            }
+        }
+
+        function addNewGuide() {
+            const title = document.getElementById('newGuideTitle').value;
+            const language = document.getElementById('newGuideLanguage').value;
+            const content = document.getElementById('newGuideContent').value;
+            const id = 'guide-' + Date.now();
+
+            guides.push({ id, title, language, content });
+            localStorage.setItem('guides', JSON.stringify(guides));
+            
+            alert('New guide added successfully!');
+            loadExistingGuides();
+            resetNewGuideForm();
+        }
+
+        function loadExistingGuides() {
+            const select = document.getElementById('existingGuides');
+            select.innerHTML = '<option value="">Select a guide to edit</option>';
+            guides.forEach(guide => {
+                const option = document.createElement('option');
+                option.value = guide.id;
+                option.textContent = `${guide.title} (${guide.language})`;
+                select.appendChild(option);
+            });
+        }
+
+        function loadGuideForEditing() {
+            const guideId = document.getElementById('existingGuides').value;
+            if (guideId) {
+                const guide = guides.find(g => g.id === guideId);
+                document.getElementById('editGuideTitle').value = guide.title;
+                document.getElementById('editGuideLanguage').value = guide.language;
+                document.getElementById('editGuideContent').value = guide.content;
+                document.getElementById('editGuideForm').classList.remove('hidden');
+            } else {
+                document.getElementById('editGuideForm').classList.add('hidden');
+            }
+        }
+
+        function updateGuide() {
+            const guideId = document.getElementById('existingGuides').value;
+            const guideIndex = guides.findIndex(g => g.id === guideId);
+            if (guideIndex !== -1) {
+                guides[guideIndex] = {
+                    id: guideId,
+                    title: document.getElementById('editGuideTitle').value,
+                    language: document.getElementById('editGuideLanguage').value,
+                    content: document.getElementById('editGuideContent').value
+                };
+                localStorage.setItem('guides', JSON.stringify(guides));
+                alert('Guide updated successfully!');
+                loadExistingGuides();
+            }
+        }
+
+        function loadMenuStructure() {
+            document.getElementById('menuStructure').value = JSON.stringify(menuStructure, null, 2);
+        }
+
+        function saveMenuStructure() {
+            try {
+                const newStructure = JSON.parse(document.getElementById('menuStructure').value);
+                menuStructure = newStructure;
+                localStorage.setItem('menuStructure', JSON.stringify(menuStructure));
+                alert('Menu structure saved successfully!');
+            } catch (error) {
+                alert('Invalid JSON structure. Please check your input.');
+            }
+        }
+
+        function resetNewGuideForm() {
+            document.getElementById('newGuideTitle').value = '';
+            document.getElementById('newGuideLanguage').value = 'en';
+            document.getElementById('newGuideContent').value = '';
+        }
+    </script>
+</body>
+</html>
