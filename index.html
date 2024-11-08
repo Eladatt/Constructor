@@ -17,100 +17,72 @@
                 <button>📊</button>
                 <button>✏️</button>
                 <button>🌐</button>
-                <button>🔧</button>
+                <button id="toggle-mode">🌞/🌙</button> <!-- Light/Dark Mode Toggle -->
                 <button>💾</button>
                 <button>❓</button>
             </nav>
         </header>
-
-        <!-- Mode Toggle -->
-        <div class="mode-toggle">
-            <label for="light-mode">Light Mode</label>
-            <input type="checkbox" id="mode-switch" checked />
-            <label for="dark-mode">Dark Mode</label>
-        </div>
 
         <!-- Main Sections -->
         <main>
             <!-- Guide Management Section -->
             <section class="guide-management">
                 <h2>Guide Management</h2>
-                <div class="guide-actions">
-                    <button class="vibrating">➕ Add New Guide</button>
-                    <button class="vibrating">📝 Edit Guide</button>
-                    <button class="vibrating">🗑️ Delete Guide</button>
-                    <button class="vibrating">🔍 Search Guides</button>
-                    <p>Current Guides: 42 | Last Updated: 2023-05-1</p>
-                </div>
+                <button id="add-guide-btn">➕ Add New Guide</button>
+                <div id="guide-list"></div> <!-- List of guides will be dynamically loaded -->
             </section>
 
             <!-- Quick Add Multiple Guides Section -->
             <section class="quick-add">
                 <h2>Quick Add Multiple Guides</h2>
-                <form id="quick-add-form">
+                <form id="add-guides-form">
                     <input type="text" placeholder="Title" id="guide-title">
                     <select id="guide-lang">
-                        <option value="">Lang: Select...</option>
-                        <!-- Add more language options here -->
+                        <option value="en">English</option>
+                        <option value="he">Hebrew</option>
+                        <option value="ar">Arabic</option>
+                        <option value="ru">Russian</option>
                     </select>
-                    <select id="guide-category">
-                        <option value="">Category: Select...</option>
-                        <!-- Add more categories here -->
-                    </select>
-                    <textarea placeholder="Content"></textarea><br />
-                    <div class="form-buttons">
-                        <button type="submit">➕ Add Another Guide</button>
+
+                    <!-- Category Dropdown -->
+                    <select id="guide-category"></select>
+
+                    <!-- Content Area -->
+                    <textarea placeholder="Content (Markdown format)" id="guide-content"></textarea>
+
+                    <!-- Add Another & Save Buttons -->
+                    <div class="buttons">
+                        <button type="button" id="add-another-guide">➕ Add Another</button>
                         <button type="submit">💾 Save All Guides</button>
                     </div>
                 </form>
             </section>
 
-            <!-- Category Management Section -->
-            <section class="category-management">
-                <h2>Category Management</h2>
-                <div class="category-actions">
-                    <button class="vibrating">➕ Add Category</button>
-                    <button class="vibrating">🌳 Manage Hierarchy</button>
-                    <p>Total Categories: 12</p>
-                </div>
-            </section>
-
-            <!-- ASCII Art Generator Section -->
-            <section class="ascii-generator">
-                <h2>ASCII Art Generator 🎨</h2>
-                Text: 
-                <input type="text" id="ascii-text" placeholder="Enter text..."><br />
-                Style:
-                <select id="ascii-style">
-                    <!-- Add more styles here -->
-                    <option value="">Standard Style</option>
-                </select><br />
-                Colorize: 
-                [🔴 Red] [🟢 Green] [🔵 Blue] [🟡 Yellow] [🟣 Purple]
+            <!-- System Status Section -->
+            <section class="system-status">
+                <h2>System Status & Recent Activity</h2>
+                Guides: 42 | Categories: 12 | Languages: 4  
+                Storage Usage: 45% | Performance Health 📈 : 92%  
                 
-                <!-- ASCII Art Preview -->
-                <pre id="ascii-preview" class="ascii-preview"></pre><br />
-                
-                <!-- Buttons for ASCII Art actions -->
-                [📋 Copy] [💾 Save as Guide Decoration]
+                <!-- Recent Activity Log -->
+                Recent Activity:
+                • New guide "PCR Basics" added (2m ago)  
+                • Category "Lab Tech" renamed (1h ago)  
             </section>
 
         </main>
 
-        <!-- Footer with additional options -->
-        <footer class="footer-actions">
-            [💡 Tips] [📊 Analytics] [👥 User Management] [🔒 Logout]
-        </footer>
-
         <!-- Message Bar with Color Picker -->
         <div class="message-bar">
-            💬 Type your command here... 
-            [Send]
-            
-            <!-- Vibrant Color Picker -->
-            Vibrant Colors:
-            [🔴 Red ] [🟢 Green ] [🔵 Blue ] 
-            [🟡 Yellow ] [🟣 Purple ]
+            <input type="text" placeholder="Type your command here..." id="message-input">
+            <div class="color-picker">
+                <!-- Color Buttons -->
+                <span class="color-btn" style="background-color: #FF00FF;"></span>
+                <span class="color-btn" style="background-color: #00FFFF;"></span>
+                <span class="color-btn" style="background-color: #00FF00;"></span>
+                <!-- Send Button -->
+                <button id="send-message">Send 💬</button>
+            </div>
         </div>
 
     </div>
