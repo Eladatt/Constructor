@@ -1,21 +1,25 @@
 /* General Styles */
 body {
     font-family: 'Courier New', monospace;
-    background-color: #FFFFFF;
-    color: #333;
     margin: 0;
     padding: 0;
-}
-
-.console {
+    background-color: #FFFFFF; /* Default light mode */
+    color: #333;
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
+.console {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 header {
+    background-color: #333;
+    color: #fff;
     padding: 10px;
-    background-color: #f0f0f0;
 }
 
 header h1 {
@@ -28,69 +32,60 @@ nav {
 }
 
 nav button {
-    font-size: 20px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    color: white;
+    font-size: 20px;
 }
 
-/* Mode Toggle */
-.mode-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.mode-toggle label {
-    margin-right: 10px;
-}
-
-/* Main Sections */
 main {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
     padding: 20px;
 }
 
 section {
-    border-radius: 8px;
-    padding: 10px;
+    margin-bottom: 20px;
 }
 
 h2 {
     font-size: 18px;
 }
 
-/* Vibrating Buttons */
-.vibrating {
-    animation: vibrate 1s infinite alternate ease-in-out;
+/* Message Bar */
+.message-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0; /* Light mode */
 }
 
-@keyframes vibrate {
-    from { transform: translateX(0); }
-    to { transform: translateX(5px); }
+.message-bar input {
+    flex-grow: 1;
 }
 
-/* ASCII Art Preview */
-.ascii-preview {
-    background-color: #f0f0f0;
+.color-picker {
+    display: flex;
 }
 
-/* Footer */
-.footer-actions {
-   padding-top: 20px; 
-   background-color:#f0f0f0; 
-   text-align:center; 
+.color-btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
-/* Light/Dark Mode Toggle */
-body.light-mode {
-   background-color:#ffffff; 
-   color:#000000; 
+/* Dark Mode */
+body.dark-mode {
+    background-color: #000000; /* Dark mode */
 }
-body.dark-mode{
-   background-color:#000000; 
-   color:#ffffff; 
+
+body.dark-mode .message-bar {
+    background-color: #333333; /* Dark message bar */
+}
+
+body.dark-mode header,
+body.dark-mode nav button,
+body.dark-mode section,
+body.dark-mode h2,
+body.dark-mode p {
+    color: white; /* Text color in dark mode */
 }
