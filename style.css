@@ -65,6 +65,24 @@ body {
     padding: 10px 0;
 }
 
+.nav-links ul {
+    display: none;
+    padding-left: 20px;
+}
+
+.nav-links li.active > ul {
+    display: block;
+}
+
+.dropdown-toggle::after {
+    content: ' ▼';
+    font-size: 0.8em;
+}
+
+.nav-links li.active > a.dropdown-toggle::after {
+    content: ' ▲';
+}
+
 #content {
     flex-grow: 1;
     padding: 20px;
@@ -77,8 +95,8 @@ body {
     font-size: 10px;
     line-height: 10px;
     white-space: pre;
-    background-color: var(--grey);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--blue);
     margin-bottom: 20px;
 }
 
