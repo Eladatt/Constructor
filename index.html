@@ -1,32 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructor Platform</title>
+    <title>LEGO HubLab 🐕‍🦺</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="sidebar">
-        <button id="toggleSidebar">☰</button>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#instructions">Instructions</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <div class="container">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="LEGO HubLab Logo" class="logo">
+                <h2>LEGO HubLab 🐕‍🦺</h2>
+            </div>
+            <button id="sidebarToggle">☰</button>
+            <div id="languageSelector">
+                <select id="language">
+                    <option value="he">עברית</option>
+                    <option value="ar">العربية</option>
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <ul class="nav-links">
+                <li><a href="pages/home.html" target="content-frame">🏠 בית</a></li>
+                <li><a href="guides/lab-safety.html" target="content-frame">🧪 בטיחות במעבדה</a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle">🔬 ניתוח</a>
+                    <ul class="submenu">
+                        <li><a href="guides/image-processing.html" target="content-frame">🖼️ עיבוד תמונה</a></li>
+                        <li><a href="guides/pcr-techniques.html" target="content-frame">🧬 טכניקות PCR</a></li>
+                    </ul>
+                </li>
+                <!-- Add more menu items here -->
             </ul>
         </nav>
+        <main id="content">
+            <div id="animation-container"></div>
+            <iframe name="content-frame" id="content-frame" src="pages/home.html"></iframe>
+        </main>
     </div>
-    <main>
-        <div id="content">
-            <h1>Welcome to the Instructor Platform</h1>
-            <p>Select a topic from the sidebar to view instructions.</p>
-        </div>
-        <div id="animationPanel">
-            <div id="animation"></div>
-        </div>
-    </main>
     <script src="animations.js"></script>
     <script src="script.js"></script>
 </body>
