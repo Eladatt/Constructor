@@ -1,0 +1,22 @@
+ASCII Art:
+\||/
+                |  @___oo
+      /\  /\   / (__,,,,|
+     ) /^\) ^\/ _)
+     )   /^\/ _)
+     )   _ /  / _)
+ /\  )/\/ ||  | )_)
+<  >      |(,,) )__)
+ ||      /    \)___)\
+ | \____(      )___) )___
+  \______(_______;;; __;;;
+
+Anesthesia Considerations:
+- Induction: Alfaxalone (12 mg/kg) or propofol (10 mg/kg), similar to protocols for large reptiles.
+- Physiological considerations: Three-chambered heart, temperature-dependent metabolism, periods of anaerobic metabolism.
+- Monitoring: Heart rate, temperature, and oxygen saturation are crucial.
+- Recovery: Monitor in a warmed, quiet environment for up to 24 hours due to potential for prolonged recovery.
+- Special equipment: Heat-resistant monitoring devices and intubation equipment for long neck and potential fire breath.
+
+Summary Table Row:
+Dragon | Alfaxalone (12 mg/kg) or propofol (10 mg/kg) for induction | Three-chambered heart, temperature-dependent metabolism, anaerobic metabolism periods | Monitor in warmed environment for up to 24 hours, use heat-resistant equipment
