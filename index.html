@@ -3,80 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGO HubLab 🐕‍🦺</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Medical Guides Hub</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="images/logo.png" alt="LEGO HubLab Logo" class="logo">
-                <h1>LEGO HubLab 🐕‍🦺</h1>
-            </div>
-            <button id="sidebarToggle" aria-label="Toggle Sidebar">☰</button>
-            <div id="languageSelector">
-                <select id="language" aria-label="Select Language">
-                    <option value="en">English</option>
-                    <option value="he">עברית</option>
-                    <option value="ar">العربية</option>
-                    <option value="ru">Русский</option>
-                </select>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home" data-page="home">🏠 Home</a></li>
-                <li>
-                    <a href="#" class="dropdown-toggle">🩺 Anesthesia</a>
-                    <ul class="submenu">
-                        <li><a href="#anesthesia-anatomy" data-page="anesthesia-anatomy">Anatomy</a></li>
-                        <li><a href="#anesthesia-physiology" data-page="anesthesia-physiology">Physiology</a></li>
-                        <li><a href="#anesthesia-pharmacology" data-page="anesthesia-pharmacology">Pharmacology</a></li>
-                        <li><a href="#comparative-physiology" data-page="comparative-physiology">Comparative Physiology</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="dropdown-toggle">🧪 Lab</a>
-                    <ul class="submenu">
-                        <li><a href="#lab-safety" data-page="lab-safety">Lab Safety</a></li>
-                        <li>
-                            <a href="#" class="dropdown-toggle">Analyzing</a>
-                            <ul class="submenu">
-                                <li><a href="#image-processing" data-page="image-processing">Image Processing</a></li>
-                                <li><a href="#pcr-techniques" data-page="pcr-techniques">PCR Techniques</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle">Visualize</a>
-                            <ul class="submenu">
-                                <li><a href="#data-visualization" data-page="data-visualization">Data Visualization</a></li>
-                                <li><a href="#microscopy-basics" data-page="microscopy-basics">Microscopy Basics</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="dropdown-toggle">📊 Statistics</a>
-                    <ul class="submenu">
-                        <li><a href="#covariance-analysis" data-page="covariance-analysis">Covariance Analysis</a></li>
-                        <li><a href="#repeated-measures" data-page="repeated-measures">Repeated Measures</a></li>
-                        <li><a href="#robust-statistics" data-page="robust-statistics">Robust Statistics</a></li>
-                        <li><a href="#statistical-distractors" data-page="statistical-distractors">Statistical Distractors</a></li>
-                    </ul>
-                </li>
-                <li><a href="#scientific-writing" data-page="scientific-writing">✍️ Scientific Writing</a></li>
-                <li><a href="#resources" data-page="resources">📚 Resources</a></li>
-                <li><a href="#celebration-station" data-page="celebration-station">🎉 Celebration Station</a></li>
-            </ul>
-        </nav>
-        <main id="content">
-            <div id="animation-container"></div>
-            <div id="page-content"></div>
-        </main>
-    </div>
-    <footer>
-        <div id="daily-fun-fact"></div>
-    </footer>
-    <script src="js/animations.js"></script>
-    <script src="js/script.js"></script>
+    <header>
+        <h1>Medical Guides Hub</h1>
+    </header>
+    
+    <nav>
+        <ul id="navigation">
+            <!-- Navigation items will be dynamically inserted here -->
+        </ul>
+    </nav>
+    
+    <main id="content">
+        <!-- Content will be loaded here -->
+    </main>
+
+    <script>
+        // Define your guides here
+        const guides = [
+            { id: 'home', title: 'Home', file: 'home.html' },
+            { id: 'cardiology', title: 'Cardiology', file: 'cardiology.html' },
+            { id: 'neurology', title: 'Neurology', file: 'neurology.html' },
+            { id: 'pediatrics', title: 'Pediatrics', file: 'pediatrics.html' },
+            // Add more guides here
+            // { id: 'new-guide-id', title: 'New Guide Title', file: 'new-guide-file.html' },
+        ];
+
+        // Function to generate navigation menu
+        function generateNavigation() {
+            const nav = document.getElementById('navigation');
+            guides.forEach(guide => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#${guide.id}`;
+                a.textContent = guide.title;
+                li.appendChild(a);
+                nav.appendChild(li);
+            });
+        }
+
+        // Function to load content
+        function loadContent(guideId) {
+            const guide = guides.find(g => g.id === guideId);
+            if (guide) {
+                fetch(guide.file)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('content').innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error('Error loading content:', error);
+                    });
+            } else {
+                document.getElementById('content').innerHTML = '<h2>Guide not found</h2>';
+            }
+        }
+
+        // Event listener for hash changes
+        window.addEventListener('hashchange', () => {
+            const guideId = window.location.hash.slice(1) || 'home';
+            loadContent(guideId);
+        });
+
+        // Initial setup
+        generateNavigation();
+        loadContent('home');
+    </script>
 </body>
 </html>
